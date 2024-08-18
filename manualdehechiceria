@@ -38,31 +38,7 @@
 
 </head>
 <body>
-   
-    <nav class="main-nav-outer" id="test"><!--main-nav-start-->   
-        <div class="container">
-            <ul class="main-nav">
-                <li><a href="#header">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="#Portfolio">Galerias</a></li>
-                <li class="small-logo"><a href="#header"><img src="img/small-logo.png" alt=""></a></li>
-                <li><a href="#client">Presentaciones</a></li>
-                <li><a href="#team">Equipo</a></li>
-                <li><a href="#contact">Contactos</a></li>
-            </ul>
-            <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
-        </div>
-    </nav><!--main-nav-end-->
-      
-
-
-
-	
    <div style="width: 100%;"><div style="position: relative; padding-bottom: 56.25%; padding-top: 0; height: 0;"><iframe title="Manual de hechisería" frameborder="0" width="1200px" height="675px" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genial.ly/64e67ce19630da00115bb168" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all"></iframe> </div> </div>
     </div>
-
-
-
-
 </body>
 </html>
