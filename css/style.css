@@ -99,12 +99,13 @@ p{
 	margin:0 auto 35px;
 }
 .header h1{
-	font-family: 'Montserrat',sans-serif;
+	font-family: 'Playfair Display',serif;
 	font-size:50px;
 	font-weight:400;
 	letter-spacing: -1px;
 	margin:0 0 22px 0 ;
 	color:#fff;
+	text-align: center;
 }
 
 .we-create{
