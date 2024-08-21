@@ -181,7 +181,7 @@ color: #fff;
 
 .billboard{
 	text-align:center;
-	background:url(../img/cartelera.jpg) center center no-repeat;
+	background:url(../img/cartelera_fondo.jpg) center center no-repeat;
 	padding:25px 0;
 	background-size: cover;
 }
