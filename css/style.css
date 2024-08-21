@@ -171,6 +171,93 @@ color: #fff;
 	color:#fff !important;
 }
 
+/* billboard Styles
+---------------------------------*/
+@media (max-width: 768px) {
+    .billboard {
+        padding: 5% 0; /* Ajusta según tus preferencias */
+    }
+}
+
+.billboard{
+	text-align:center;
+	background:url(../img/cartelera.jpg) center center no-repeat;
+	padding:25px 0;
+	background-size: cover;
+}
+.logo{
+	width:125x;
+	margin:0 auto 25px;
+}
+.billboard h1{
+	font-family: 'Playfair Display',serif;
+	font-size:40px;
+	font-weight:400;
+	letter-spacing: -1px;
+	margin:0 0 22px 0 ;
+	color:#fff;
+	text-align: center;
+}
+
+.we-create{
+	padding:0;
+	margin:35px 0 55px;
+}
+.wp-pic{
+	margin-bottom:20px;
+}
+.we-create li{
+	display:inline-block;
+	font-family: 'Montserrat',sans-serif;
+	font-size:14px;
+	color: #bcbcbc;
+	text-transform: uppercase;
+	font-weight: 400;
+	margin:0 5px 0 0;
+	padding:0 0 0 15px;
+}
+.we-create li:first-child{
+	background:none;
+}
+
+.start-button {
+	padding-left: 0px;
+}
+
+.start-button li a{
+color: #fff;
+}
+
+
+.link{
+	padding:15px 35px;
+	background:#7cc576;
+	color:#fff !important;
+	font-size:16px;
+	font-weight:400;
+	font-family: 'Montserrat', sans-serif;
+	display:inline-block;
+	border-radius:3px;
+	text-transform:uppercase;
+	line-height:25px;
+	margin-bottom:20px;
+	transition:all 0.3s ease-in-out;
+	-moz-transition:all 0.3s ease-in-out;
+	-webkit-transition:all 0.3s ease-in-out;
+}
+.link:hover {
+	text-decoration:none;
+	color:#7cc576 !important;
+	background:#fff;
+}
+
+.link:active, .link:focus {
+	background: #7cc576;
+	text-decoration:none;
+	color:#fff !important;
+}
+
+
 /* Navigation
 ---------------------------------*/
 .main-nav-outer{
