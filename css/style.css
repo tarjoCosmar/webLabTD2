@@ -175,7 +175,7 @@ color: #fff;
 ---------------------------------*/
 @media (max-width: 768px) {
     .billboard {
-        padding: 5% 0; /* Ajusta según tus preferencias */
+        padding: 500% 0; /* Ajusta según tus preferencias */
     }
 }
 
@@ -197,64 +197,6 @@ color: #fff;
 	margin:0 0 22px 0 ;
 	color:#fff;
 	text-align: center;
-}
-
-.we-create{
-	padding:0;
-	margin:35px 0 55px;
-}
-.wp-pic{
-	margin-bottom:20px;
-}
-.we-create li{
-	display:inline-block;
-	font-family: 'Montserrat',sans-serif;
-	font-size:14px;
-	color: #bcbcbc;
-	text-transform: uppercase;
-	font-weight: 400;
-	margin:0 5px 0 0;
-	padding:0 0 0 15px;
-}
-.we-create li:first-child{
-	background:none;
-}
-
-.start-button {
-	padding-left: 0px;
-}
-
-.start-button li a{
-color: #fff;
-}
-
-
-.link{
-	padding:15px 35px;
-	background:#7cc576;
-	color:#fff !important;
-	font-size:16px;
-	font-weight:400;
-	font-family: 'Montserrat', sans-serif;
-	display:inline-block;
-	border-radius:3px;
-	text-transform:uppercase;
-	line-height:25px;
-	margin-bottom:20px;
-	transition:all 0.3s ease-in-out;
-	-moz-transition:all 0.3s ease-in-out;
-	-webkit-transition:all 0.3s ease-in-out;
-}
-.link:hover {
-	text-decoration:none;
-	color:#7cc576 !important;
-	background:#fff;
-}
-
-.link:active, .link:focus {
-	background: #7cc576;
-	text-decoration:none;
-	color:#fff !important;
 }
 
 
@@ -298,6 +240,14 @@ color: #fff;
 .small-logo{ 
 	padding:0 32px;
 }
+
+.samall-logo img {
+	width: 35px; /* Cambia el tamaño según tus necesidades */
+	height: auto;
+}
+
+
+
 
 .main-section{
 	padding:90px 0 110px;
@@ -923,5 +873,6 @@ border: 2px solid #fff;
 	animation-delay: 1.2s; 
 	-webkit-animation-delay: 1.2s; 
 }
+
 
 
