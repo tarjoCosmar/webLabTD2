@@ -199,6 +199,12 @@ color: #fff;
 	text-align: center;
 }
 
+.centered-image {
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 /* Navigation
 ---------------------------------*/
@@ -241,10 +247,15 @@ color: #fff;
 	padding:0 32px;
 }
 
-.samall-logo img {
+.small-logo img {
 	width: 35px; /* Cambia el tamaño según tus necesidades */
 	height: auto;
 }
+
+.small-logo img:hover {
+	filter: brightness(150%);
+}
+
 
 
 
