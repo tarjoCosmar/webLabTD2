@@ -243,7 +243,7 @@ color: #fff;
 
 .main-nav_mobile{
 	position: relative;
-	text-align:center;
+	text-align:left;
 	margin:10px 0 0px;
 	padding:0;
 	list-style:none;
@@ -277,11 +277,6 @@ color: #fff;
   	transform: translateY(-100%);
   }
 
-  .fa-bars {
-	position:relative;
-  	top: 50%;
-  	transform: translateY(-200%);
-  }
 
 /* Services
 ---------------------------------*/
