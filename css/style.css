@@ -242,10 +242,12 @@ color: #fff;
 }
 
 .main-nav_mobile{
+	position: relative;
 	text-align:center;
 	margin:10px 0 0px;
 	padding:0;
 	list-style:none;
+	height: 60px;
 }
 .main-nav_mobile li{
 	display:inline;
@@ -268,6 +270,18 @@ color: #fff;
 	text-decoration:none;
 	color: #7cc576;
 }
+
+.logo_mobile {
+	position:relative;
+  	top: 50%;
+  	transform: translateY(-100%);
+  }
+
+  .fa-bars {
+	position:relative;
+  	top: 50%;
+  	transform: translateY(-200%);
+  }
 
 /* Services
 ---------------------------------*/

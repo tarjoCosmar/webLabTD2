@@ -86,9 +86,8 @@
 	.isotope-item{ width:300px; margin:0px auto;}
 	.isotope{ width:400px; margin:0px auto;}
 	.Portfolio-box{}
-	.portfolioContainer{ width:350px; margin:0px auto !important; } 
-	
-	
+	.portfolioContainer{ width:350px; margin:0px auto !important; }
+	 	
 }
 
 @media only screen and (max-width: 479px) {
