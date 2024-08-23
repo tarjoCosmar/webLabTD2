@@ -175,7 +175,7 @@ color: #fff;
 ---------------------------------*/
 @media (max-width: 768px) {
     .billboard {
-        padding: 500% 0; /* Ajusta según tus preferencias */
+        padding: 5% 0; /* Ajusta según tus preferencias */
     }
 }
 
@@ -197,12 +197,6 @@ color: #fff;
 	margin:0 0 22px 0 ;
 	color:#fff;
 	text-align: center;
-}
-
-.centered-image {
-    display:inline-block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 
@@ -247,23 +241,33 @@ color: #fff;
 	padding:0 32px;
 }
 
-.small-logo img {
-	width: 35px; /* Cambia el tamaño según tus necesidades */
-	height: auto;
+.main-nav_mobile{
+	text-align:center;
+	margin:10px 0 0px;
+	padding:0;
+	list-style:none;
+}
+.main-nav_mobile li{
+	display:inline;
+	margin:0 1px;
+}
+.main-nav_mobile li a{
+	display:inline-block;
+	color:#222222;
+	text-transform:uppercase;
+	font-family: 'Montserrat', sans-serif;
+	text-decoration: none;
+	line-height:20px;
+	margin:17px 32px;
+	transition:all 0.3s ease-in-out;
+	-moz-transition:all 0.3s ease-in-out;
+	-webkit-transition:all 0.3s ease-in-out;
 }
 
-.small-logo img:hover {
-	filter: brightness(150%);
+.main-nav_mobile li a:hover{ 
+	text-decoration:none;
+	color: #7cc576;
 }
-
-
-
-
-
-.main-section{
-	padding:90px 0 110px;
-}
-
 
 /* Services
 ---------------------------------*/
@@ -838,6 +842,7 @@ border: 2px solid #fff;
 	max-width: 1140px;
 }
 
+---------------------------------*/
 
 /* Animation Timers
 ---------------------------------*/
