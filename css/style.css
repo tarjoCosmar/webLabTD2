@@ -902,5 +902,29 @@ border: 2px solid #fff;
 	-webkit-animation-delay: 1.2s; 
 }
 
+/* Estilos para el carrusel */
+.reel_horizontal {
+    display: flex;
+    overflow: hidden;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.cartelera-box {
+    flex: 0 0 auto; /* Ajusta el tamaño de los elementos según su contenido */
+    text-align: center;
+    padding: 20px;
+}
+
+.cartelera-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cartelera-box h3,
+.cartelera-box p {
+    margin: 0;
+    padding: 10px;
+}
 
 
