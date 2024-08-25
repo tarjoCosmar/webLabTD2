@@ -3,13 +3,21 @@
    ========================================================================== */
 
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 991px) {
 	/****Ipad Landscape 1024 Container 970 ****/
 	
 	.service-list{ margin-bottom:30px;}
 	.c-logo-part ul li{ margin:0 15px;}
 	.form{ margin:0 0 0 20px}
 	.main-nav{ display:block !important; }
+
+	.swiper-slide{ 
+		padding: 0 70px
+	}
+
+	.swiper-slide img{ 
+		width: 100%;
+	}
 	/*.portfolioContainer{ width:800px; margin:0px auto !important; } */ 
 	
 }	

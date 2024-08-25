@@ -1,7 +1,7 @@
-const swiper = new Swiper('.swiper', {
-    direction: 'horizontal', // Cambia a 'vertical' si prefieres
-    loop: true, // Para que el carrusel sea infinito
-    pagination: {
-        el: '.swiper-pagination',
-    },
+var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 80,
+    grabCursor: true,
+    loop: true,
+
 });

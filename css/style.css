@@ -901,35 +901,34 @@ border: 2px solid #fff;
 	-webkit-animation-delay: 1.2s; 
 }
 
-/* Estilos para el carrusel */
-.reel_horizontal {
-    display: flex;
-    overflow: hidden;
-	max-width: 1000px;
-	margin: 0 auto;
-}
 
-.cartelera-box {
-    flex: 0 0 auto; /* Ajusta el tamaño de los elementos según su contenido */
-    text-align: center;
-    padding: 20px;
-}
-
-.cartelera-box img {
-    max-width: 100%;
-    height: auto;
-}
-
-.cartelera-box h3,
-.cartelera-box p {
-    margin: 0;
-    padding: 10px;
-}
-
-/* Carrusel
----------------------------------*/
 
 .swiper {
-    width: 600px; /* Ajusta el ancho según tus necesidades */
-    height: 300px; /* Ajusta la altura según tus necesidades */
+	margin-top: 40px;
 }
+
+.swiper-slide {
+	margin-bottom: 50px;
+	background-color: #ffffff;
+	box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+	border-radius: 15px;
+	height: 420px;
+	width: 295px;
+	position: relative;
+}
+
+.swiper-slide img {
+	width: 295px;
+	border-radius: 15px;
+	height: 420px;
+}
+
+.swiper-txt {
+	font-size: 20px;
+	margin-bottom: 5px;
+	color: #222222;
+}
+	
+
+
+
