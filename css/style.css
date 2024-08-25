@@ -205,16 +205,17 @@ color: #fff;
 .main-nav-outer{
 	padding:0px;
 	border-bottom:1px solid #dddddd;
-	box-shadow:0 4px 5px -3px #ececec;
+	box-shadow:0 4px 5px -3px #070707;
 	position:relative;
 	background:#fff;
 }
+
 .main-nav{
 	text-align:center;
 	margin:10px 0 0px;
 	padding:0;
 	list-style:none;
-	line-height: 2;
+
 }
 .main-nav li{
 	display:inline;
@@ -854,8 +855,6 @@ border: 2px solid #fff;
 	max-width: 1140px;
 }
 
----------------------------------*/
-
 /* Animation Timers
 ---------------------------------*/
 .delay-02s { 
@@ -903,4 +902,10 @@ border: 2px solid #fff;
 }
 
 
+/* Carrusel
+---------------------------------*/
 
+.swiper {
+    width: 600px; /* Ajusta el ancho según tus necesidades */
+    height: 300px; /* Ajusta la altura según tus necesidades */
+}
