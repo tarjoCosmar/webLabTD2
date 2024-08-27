@@ -902,8 +902,13 @@ border: 2px solid #fff;
 }
 
 
-
+/* Swiper Slider
+---------------------------------*/
 .swiper {
+	margin-top: 10px;
+}
+
+.swiper-container {
 	margin-top: 10px;
 }
 
@@ -928,6 +933,12 @@ border: 2px solid #fff;
 	color: #222222;
 }
 	
-
+.swiper-button-next, .swiper-button-prev {
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #ffffff;
+	position:relative;
+	border-radius: 20px;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
 
 
