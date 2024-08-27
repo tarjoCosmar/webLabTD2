@@ -1,7 +1,3 @@
-var swiper = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 80,
-    grabCursor: true,
-    loop: true,
+import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
 
-});
+console.log(Swiper);

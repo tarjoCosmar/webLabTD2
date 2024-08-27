@@ -902,9 +902,15 @@ border: 2px solid #fff;
 }
 
 
-
+/*carrusel
+----------*/
 .swiper {
 	margin-top: 40px;
+}
+
+.swiper-section {
+	margin-top: 40px;
+	position: center;
 }
 
 .swiper-slide {

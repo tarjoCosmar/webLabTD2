@@ -31,7 +31,7 @@
 <script type="text/javascript" src="js/wow.js"></script>
 <script type="text/javascript" src="js/classie.js"></script>
 
-<script src="/js/main.js"></script>
+<script type="module" src="/js/main.js" defer></script>
 </head>
 
 <body>
@@ -88,58 +88,39 @@
                     <img src="img/portadalpm.png" alt="Imagen de portada" class="stop-bounce centered-image">
                 </div>
         </section><!--billboard-end-->
-
-       <div class="swiper maySwiper container">
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                    <div class="swiper-txt">
-                        <h1>Titulo</h1>
-                        <p>Descripcion</p>
-                    </div>
-                    <img src="img/obras/Portfolio-pic1.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-txt">
-                        <h1>Titulo</h1>
-                        <p>Descripcion</p>
-                    </div>
-                    <img src="img/obras/Portfolio-pic2.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-txt">
-                        <h1>Titulo</h1>
-                        <p>Descripcion</p>
-                    </div>
-                    <img src="img/obras/Portfolio-pic3.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-txt">
-                        <h1>Titulo</h1>
-                        <p>Descripcion</p>
-                    </div>
-                    <img src="img/obras/Portfolio-pic4.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <div class="swiper-txt">
-                        <h1>Titulo</h1>
-                        <p>Descripcion</p>
-                    </div>
-                    <img src="img/obras/Portfolio-pic5.jpg" alt="">
-                </div>              
-
-            </div>
-
-       </div>
-
-
-
-        <footer class="footer"><!--footer-start-->
+        
+        <section class="swiper-section" id="swiper"><!--swiper-section-start-->
             <div class="container">
-                <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
-                <span class="copyright">Diseñadfo por Mk-sistem 2015 <a href="#">Tecnología</a>.</span>
+
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/slide1.jpg" alt="Slide 1">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/slide2.jpg" alt="Slide 2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/slide3.jpg" alt="Slide 3">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
             </div>
-        </footer><!--footer-end-->
+        </section><!--swiper-section-end-->
+       
+
+
+        <section class="footer"><!--footer-start-->
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
+                    <span class="copyright">Diseñadfo por Mk-sistem 2015 <a href="#">Tecnología</a>.</span>
+                </div>
+            </footer>
+        </section><!--footer-end-->
+
     </div>    
 
     <script type="text/javascript">
@@ -160,7 +141,7 @@
       }
         );
         wow.init();
-        document.getElementById('').onclick = function() {
+        document.getElementById('header').onclick = function() {
         var section = document.createElement('section');
         section.className = 'wow fadeInDown';
         this.parentNode.insertBefore(section, this);
@@ -186,49 +167,6 @@
 		});
 	})
     </script>
-
-    <script type="text/javascript">
-        $(window).load(function(){
-        var $container = $('.portfolioContainer'),
-        $body = $('body'),
-        colW = 375,
-        columns = null;
-        $container.isotope({
-            // disable window resizing
-        resizable: true,
-        masonry: {
-        columnWidth: colW
-        }
-        }); 
-         $(window).smartresize(function(){
-        // check if columns has changed
-        var currentColumns = Math.floor( ( $body.width() -30 ) / colW );
-        if ( currentColumns !== columns ) {
-        // set new column count
-        columns = currentColumns;
-        // apply width to container manually, then trigger relayout
-         $container.width( columns * colW )
-        .isotope('reLayout');
-        } 
-        }).smartresize(); // trigger resize to set container width
-        $('.portfolioFilter a').click(function(){
-        $('.portfolioFilter .current').removeClass('current');
-        $(this).addClass('current');
-        var selector = $(this).attr('data-filter');
-        $container.isotope({		
-            filter: selector,
-         });
-         return false;
-    });
-  
-});
-
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script src="scripts.js"></script>
-
-   
 
 </body>
 </html>
