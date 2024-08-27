@@ -912,6 +912,7 @@ border: 2px solid #fff;
 
 .swiper-container {
 	margin-top: 10px;
+	position: relative;
 
 }
 
@@ -943,14 +944,19 @@ border: 2px solid #fff;
 }
 	
 .swiper-button-next, .swiper-button-prev {
-	background-color: rgba(0, 0, 0, 0.5);
-	color: #ffffff;
-	position:relative;
-	border-radius: 20px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-	margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border-radius: 20px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    z-index: 10; 
 }
 
+.swiper-button-next {
+    right: 10px; 
+}
 
 .swiper-pagination {
 	position: relative;
