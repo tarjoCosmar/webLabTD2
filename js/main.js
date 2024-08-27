@@ -3,6 +3,8 @@ import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.brow
 new Swiper(".swiper-container", {
     direction: 'horizontal',
     loop: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
 
     navigation: {
         nextEl: ".swiper-button-next",
@@ -10,6 +12,12 @@ new Swiper(".swiper-container", {
         },
         
     autoplay: {
-        delay: 2000,
+        delay: 10000,
+    },
+
+    pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true,
     },
 });

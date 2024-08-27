@@ -3,7 +3,7 @@
    ========================================================================== */
 
 
-@media only screen and (min-width: 991px) {
+@media only screen and (min-width: 992px) {
 	/****Ipad Landscape 1024 Container 970 ****/
 	
 	.service-list{ margin-bottom:30px;}
@@ -17,6 +17,10 @@
 
 	.swiper-slide img{ 
 		width: 100%;
+	}
+
+	.swiper-pagination {
+		display: none;
 	}
 	/*.portfolioContainer{ width:800px; margin:0px auto !important; } */ 
 	
@@ -95,6 +99,8 @@
 	.isotope{ width:400px; margin:0px auto;}
 	.Portfolio-box{}
 	.portfolioContainer{ width:350px; margin:0px auto !important; }
+	.swiper-button-next, .swiper-button-prev{ display:block;}
+	.swiper-pagination{ display:none;}
 	 	
 }
 

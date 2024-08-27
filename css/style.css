@@ -901,20 +901,18 @@ border: 2px solid #fff;
 	-webkit-animation-delay: 1.2s; 
 }
 
-
-<<<<<<< HEAD
 /* Swiper Slider
 ---------------------------------*/
 =======
 /*carrusel
 ----------*/
->>>>>>> c624bcf1d961fa42e47087ca5247282b06addeb2
 .swiper {
 	margin-top: 10px;
 }
 
 .swiper-container {
 	margin-top: 10px;
+
 }
 
 .swiper-section {
@@ -933,7 +931,7 @@ border: 2px solid #fff;
 
 .swiper-slide img {
 	width: 100%;
-	border-radius: 15px;
+	border-radius: 5px;
 	height: auto;
 }
 
@@ -952,3 +950,9 @@ border: 2px solid #fff;
 }
 
 
+.swiper-pagination {
+	position: relative;
+	background: #ffffff;
+	width: 16px;	
+	height: 16px;
+}
