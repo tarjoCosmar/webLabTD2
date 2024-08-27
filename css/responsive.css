@@ -20,6 +20,10 @@
 	}
 
 	.swiper-pagination {
+		display: block;
+	}
+
+	.swiper-button-next, .swiper-button-prev {
 		display: none;
 	}
 	/*.portfolioContainer{ width:800px; margin:0px auto !important; } */ 
@@ -97,7 +101,10 @@
 	.isotope-item img{ width:300px; left:50%; margin-left:-100px;}
 	.isotope-item{ width:300px; margin:0px auto;}
 	.isotope{ width:400px; margin:0px auto;}
-	.Portfolio-box{}
+	.Portfolio-box{
+		width: 100%;
+		max-width: 100%;
+	}
 	.portfolioContainer{ width:350px; margin:0px auto !important; }
 	.swiper-button-next, .swiper-button-prev{ display:block;}
 	.swiper-pagination{ display:none;}
