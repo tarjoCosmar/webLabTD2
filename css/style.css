@@ -902,14 +902,24 @@ border: 2px solid #fff;
 }
 
 
+<<<<<<< HEAD
 /* Swiper Slider
 ---------------------------------*/
+=======
+/*carrusel
+----------*/
+>>>>>>> c624bcf1d961fa42e47087ca5247282b06addeb2
 .swiper {
 	margin-top: 10px;
 }
 
 .swiper-container {
 	margin-top: 10px;
+}
+
+.swiper-section {
+	margin-top: 40px;
+	position: center;
 }
 
 .swiper-slide {
