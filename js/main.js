@@ -3,7 +3,7 @@ import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.brow
 new Swiper(".swiper-container", {
     direction: 'horizontal',
     loop: true,
-    slidesPerView: 3,
+    slidesPerView: 2,
     spaceBetween: 20,
 
     navigation: {
@@ -20,4 +20,12 @@ new Swiper(".swiper-container", {
         type: "bullets",
         clickable: true,
     },
+
+    breakpoints: {
+        // when window width is <= 640px
+        762: {
+            slidesPerView: 4,
+            spaceBetween: 10
+        }
+    }
 });

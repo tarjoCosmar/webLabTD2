@@ -917,7 +917,7 @@ border: 2px solid #fff;
 
 .swiper-section {
 	margin-top: 40px;
-	position: center;
+	text-align: center;
 }
 
 .swiper-slide {
@@ -927,6 +927,7 @@ border: 2px solid #fff;
 	border-radius: 15px;
 	width:auto;
 	position: relative;
+
 }
 
 .swiper-slide img {
