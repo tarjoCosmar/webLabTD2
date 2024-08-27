@@ -9,8 +9,8 @@ new Swiper(".swiper-container", {
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
-        },
-        
+    },
+    
     autoplay: {
         delay: 10000,
     },
@@ -22,10 +22,19 @@ new Swiper(".swiper-container", {
     },
 
     breakpoints: {
-        // when window width is <= 640px
         762: {
             slidesPerView: 4,
             spaceBetween: 10
         }
+    },
+
+    effect: 'coverflow',
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: false,
     }
 });
+
