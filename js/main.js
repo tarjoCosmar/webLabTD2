@@ -38,3 +38,18 @@ new Swiper(".swiper-container", {
     }
 });
 
+
+// videos
+$('#videoModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var videoUrl = button.data('video');
+    var modal = $(this);
+    modal.find('#videoFrame').attr('src', videoUrl);
+});
+
+$('#videoModal').on('hide.bs.modal', function () {
+    var modal = $(this);
+    modal.find('#videoFrame').attr('src', '');
+});
+
+
