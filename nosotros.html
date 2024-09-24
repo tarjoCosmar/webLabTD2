@@ -34,17 +34,25 @@
         <div style="overflow:hidden;">
 
             <nav class="main-nav-outer" id="test"><!--main-nav-start-->
-	            <div class="container">
+                <div class="container">
                     <ul class="main-nav">
-                        <li><a href="#service">Nosotros</a></li>
-                        <li><a href="obras.html">Obras</a></li>
-                        <li class="small-logo"><a href="#main-section"><img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"></a></li>
+                        <li><a href="index.html#test">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="#Portfolio">Galerias</a></li>
+                        <li class="small-logo">
+                            <a href="#billboard">
+                                <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
+                            </a>
+                        </li>
                         <li><a href="#client">Presentaciones</a></li>
                         <li><a href="#team">Equipo</a></li>
                         <li><a href="#contact">Contactos</a></li>
                     </ul>
-                    <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
-                </div>
+                    <ul class="main-nav_mobile">
+                        <li><a class="logo_mobile" href="#"><img src="img/logo_nav1.png" alt=""></a></li>
+                        <li><a class="res-nav_click" href="#"><i class="fa-bars"></i></a></li>
+                    </ul>              
+                </div>       
             </nav><!--main-nav-end-->
 
             <section class="main-section" id="service"><!--main-section-start-->
@@ -139,9 +147,9 @@
                                 <img src="img/team-leader-pic3.jpg" alt="fotografía de Julissa Ayala Garzón">
                                 <ul>
                                     <li><a href="https://www.facebook.com/yulissamaricela.ayalagarzon?locale=es_LA" class="fa-facebook"></a></li>
-                                    <li><a href="#" class="fa-instagram"></a></li>
+                                    <li><a href="https://www.instagram.com/julissaayala17/" class="fa-instagram"></a></li>
                                     <li><a href="#" class="fa-linkedln"></a></li>
-                                    <li><a href="#" class="fa-tiktok"></a></li>
+                                    <li><a href="https://www.tiktok.com/@julissaayala25" class="fa-tiktok"></a></li>
                                 </ul>
                             </div>
                             <h3 class="wow fadeInDown delay-03s">Julissa Ayala Garzón</h3>
@@ -337,6 +345,14 @@ $(window).load(function(){
 });
 
         </script>
+
+<script>
+    document.querySelector('a[href="index.html#test"]').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.location.href = 'index.html#test';
+    });
+</script>
+
 
     </body>
 </html>
