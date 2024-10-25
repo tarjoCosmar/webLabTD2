@@ -572,7 +572,7 @@ border: 2px solid #fff;
 .team-leader-box{
 	width:30.66%;
 	margin-right: 3.82979%;
-	height: 490px;
+	height: 510px;
 	overflow: hidden;
 	text-align: center;
 	float: left;
@@ -648,8 +648,8 @@ border: 2px solid #fff;
 .team-leader ul li a:hover, .team-leader ul li a:focus{
 	text-decoration:none;
 }
-.team-leader ul li a.tiktok:hover{
-	color:#55acee;
+.team-leader ul li a.fa-tiktok:hover{
+	color:#0c0c0c;
 }
 .team-leader ul li a.fa-facebook:hover{
 	color:#3b5998;
