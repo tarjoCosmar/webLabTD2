@@ -38,6 +38,18 @@ new Swiper(".swiper-container", {
     }
 });
 
+//fotos
+$('#photoModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    //var slideTo = button.data('slide-to');
+    var imgSrc = button.data('img');
+    var modal = $(this);
+    //var carousel = modal.find('.carousel');
+    //carousel.carousel(slideTo);
+    var modalImage = modal.find('.modal-body img'); // Asume que tienes una imagen en el cuerpo del modal
+    modalImage.attr('src', imgSrc); // Establece la fuente de la imagen
+  });
+  
 
 // videos
 $('#videoModal').on('show.bs.modal', function (event) {
@@ -53,4 +65,6 @@ $('#videoModal').on('hide.bs.modal', function () {
 });
 
 
+  
+  
 

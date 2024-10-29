@@ -1036,3 +1036,40 @@ border: 2px solid #fff;
   height: 16px;
 }
 
+/*/obras*/
+
+.custom-icon {
+	font-size: 24px; /* Ajusta el tamaño del icono */
+	margin-right: 10px; /* Ajusta el espacio entre el icono y el texto */
+  }
+  
+  .custom-text {
+	font-size: 10px; /* Ajusta el tamaño del texto */
+  }
+
+  /*miniaturas*/
+  
+  .tilted-thumbnail {
+	transform: rotate(-2deg);
+	transition: transform 0.2s;
+  }
+  
+  .tilted-thumbnail:hover {
+	transform: rotate(0deg);
+  }
+  
+  .tilted-thumbnail-2 {
+	transform: rotate(2deg);
+	transition: transform 0.2s;
+  }
+  
+  .tilted-thumbnail-2:hover {
+	transform: rotate(0deg);
+  }
+
+.modal-body {
+	transform: rotate3d();
+
+}
+
+	

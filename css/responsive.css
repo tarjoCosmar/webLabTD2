@@ -104,8 +104,8 @@
 	.isotope-item{ width:300px; margin:0px auto;}
 	.isotope{ width:400px; margin:0px auto;}
 	.Portfolio-box{
-		width: 100%;
-		max-width: 100%;
+		width: 110%;
+		max-width: 90%;
 	}
 	.portfolioContainer{ width:350px; margin:0px auto !important; }
 	.swiper-button-next, .swiper-button-prev{ display:none;}
@@ -132,3 +132,7 @@
 	.main-nav_mobile {
 	  display: none;
   }
+
+  
+  
+  
