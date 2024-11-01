@@ -1072,4 +1072,35 @@ border: 2px solid #fff;
 
 }
 
+/* Estilos para la versión pequeña */
+.small-portfolio-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around; /* Centra los elementos */
+	margin: 0 auto;
+	padding: 0;
+  }
+  
+  .small-portfolio-box {
+	flex: 0 1 120px; /* Tamaño pequeño para las cajas */
+	max-width: 120px; /* Limitar el tamaño máximo */
+	margin: 5px; /* Márgenes pequeños */
+	text-align: center;
+	height: auto;
+  }
+  
+  .small-thumbnail {
+	max-width: 100%;
+	height: auto;
+  }
+  
+  .small-title {
+	font-size: 12px;
+	margin: 5px 0;
+	line-height: 1.2;
+  }
+  
+  
+	
+   
 	
