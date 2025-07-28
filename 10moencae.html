@@ -1018,31 +1018,55 @@
 
             // You would typically send this data to a backend server
             // For demonstration, we'll simulate an API call
-            console.log("Formulario enviado:", data);
+            console.log("Datos del formulario a enviar:", data); // Esto es útil para depurar
 
             try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 2000)); // 2 second delay
+                // ¡AQUÍ ES DONDE USAS LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT!
+                const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbyneZQJx0OnfnDfJIYqKxboNjhSoiXYauIX1ppmLnsaV1D374mv2JocK48-Z-U5mDhD0g/exec'; 
 
-                // Hide form and show confirmation
-                sections.forEach(section => section.style.display = 'none');
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-                submitBtn.style.display = 'none';
-                loadingSpinner.style.display = 'none';
-                confirmationMessage.style.display = 'block';
+                const response = await fetch(googleAppsScriptURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Es importante enviar los datos como JSON
+                    },
+                    body: JSON.stringify(data) // Convierte los datos del formulario a formato JSON
+                });
 
-                form.reset(); // Clear the form
-                paypalCompletedInput.value = 'false'; // Reset PayPal status
+                const result = await response.json(); // Lee la respuesta JSON del script
 
+                if (response.ok && result.status === 'success') {
+                    // Ocultar formulario y mostrar confirmación
+                    sections.forEach(section => section.style.display = 'none'); // Tu código original usa display='none'
+                    // Si prefieres usar classList.remove('active') como en showSection, también es válido
+                    
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'none';
+                    loadingSpinner.style.display = 'none';
+                    confirmationMessage.style.display = 'block';
+
+                    form.reset(); // Limpia el formulario
+                    paypalCompletedInput.value = 'false'; // Reinicia el estado de PayPal
+
+                    // Opcional: Reiniciar la barra de progreso y el primer paso si quieres que el formulario se pueda usar de nuevo
+                    // currentSection = 1;
+                    // showSection(currentSection);
+                    // sections.forEach(section => section.classList.remove('active', 'was-validated')); // Asegura que todas las secciones se reinicien visualmente
+                    // sections[0].classList.add('active'); // Muestra la primera sección de nuevo
+
+
+                } else {
+                    console.error('Error del script de Google Apps Script:', result.message || 'Error desconocido');
+                    alert(`Hubo un error al enviar tu inscripción. Por favor, inténtalo de nuevo más tarde. Mensaje: ${result.message || 'Error desconocido'}`);
+                }
             } catch (error) {
-                console.error('Error al enviar el formulario:', error);
-                alert('Hubo un error al procesar tu inscripción. Por favor, inténtalo de nuevo.');
+                console.error('Error al enviar el formulario (fetch):', error);
+                alert('Hubo un problema de conexión al enviar tu inscripción. Por favor, verifica tu internet e inténtalo de nuevo más tarde.');
+            } finally {
                 loadingSpinner.style.display = 'none';
                 submitBtn.disabled = false;
                 prevBtn.disabled = false;
             }
-        });
 
         // Handle payment method display
         paymentRadios.forEach(radio => {
