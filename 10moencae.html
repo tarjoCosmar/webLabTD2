@@ -1054,12 +1054,12 @@
         } catch (error) {
             console.error('Error al enviar el formulario (fetch):', error);
             alert('Hubo un problema de conexión al enviar tu inscripción. Por favor, verifica tu internet e inténtalo de nuevo más tarde.');
-        } **finally** { // Este bloque DEBE estar aquí
+        }   finally { // Este bloque DEBE estar aquí
             loadingSpinner.style.display = 'none';
             submitBtn.disabled = false;
             prevBtn.disabled = false;
         }
-    }); // <--- Aquí es donde se cerraba el problema, esta llave ahora cierra correctamente el addEventListener
+    }); 
 
     // Handle payment method display
     paymentRadios.forEach(radio => {
