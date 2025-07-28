@@ -3,58 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="NVJH27O-HC-slZJcmilpHu5SJ2MFmz6fEJpca56-RLo" />
     <title>Inscripción ENCAE Florecer | Laboratorio Teatral D2</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YNT271NSJK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YNT271NSJK');
-    </script>
-
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.ico" type="img/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600">
     
-    <!-- Slick Carousel CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    
-    <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
-    
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    
-    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="css/responsive.css" rel="stylesheet" type="text/css">
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
-    
-    <!-- jQuery -->
-    <script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
-    
-    <!-- Bootstrap JS -->
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    
-    <!-- Additional JS Libraries -->
-    <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.js"></script>
-    <script type="text/javascript" src="js/wow.js"></script>
-    <script type="text/javascript" src="js/classie.js"></script>
-    
-    <!-- Custom JS -->
-    <script type="module" src="/js/main.js" defer></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=BAA1T3wZTeHi5KhqFa6i9Y3ApgAaY_hStgrmXJbjmK5UfPuGhDK8i3CLWyZfu5AjxQ6GZ2iR736vUxQa1M&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
     
     <style>
         :root {
@@ -65,10 +21,56 @@
             --dark-color: #2c3e50;
         }
         
+        /* Estilos para la navegación */
+        .main-nav-outer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .main-nav li {
+            margin: 0 15px;
+        }
+        
+        .main-nav li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .main-nav li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .small-logo {
+            position: absolute;
+            left: 50%;
+            top: -15px;
+            transform: translateX(-50%);
+        }
+        
+        .small-logo img {
+            height: 60px;
+        }
+        
         .encae-header {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1546111243-1e18006bd839?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             color: white;
-            padding: 60px 0;
+            padding: 100px 0 60px;
             text-align: center;
             margin-bottom: 30px;
         }
@@ -98,18 +100,16 @@
             margin-bottom: 40px;
             padding-bottom: 30px;
             border-bottom: 1px solid #eee;
+            display: none;
         }
         
-        .form-section h3 {
-            color: var(--primary-color);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
-            display: inline-block;
+        .form-section.active {
+            display: block;
         }
         
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
         
         .form-label {
@@ -128,11 +128,29 @@
             padding: 12px 15px;
             border: 2px solid #ddd;
             transition: all 0.3s;
+            width: 100%;
         }
         
         .form-control:focus, .form-select:focus {
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .is-invalid {
+            border-color: var(--accent-color) !important;
+        }
+        
+        .invalid-feedback {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+
+        .form-group.was-validated .form-control:invalid ~ .invalid-feedback,
+        .form-group.was-validated .form-select:invalid ~ .invalid-feedback,
+        .form-group.was-validated .form-check-input:invalid ~ .invalid-feedback {
+            display: block; /* Show feedback for invalid fields when validated */
         }
         
         .btn-primary {
@@ -142,12 +160,31 @@
             font-weight: 600;
             border-radius: 5px;
             transition: all 0.3s;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary:hover {
             background-color: #7d3c98;
             border-color: #7d3c98;
             transform: translateY(-2px);
+        }
+        
+        .btn-outline-secondary {
+            background-color: transparent;
+            border: 1px solid #6c757d;
+            color: #6c757d;
+            padding: 12px 25px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
         }
         
         .payment-method {
@@ -159,6 +196,10 @@
             border-left: 4px solid var(--secondary-color);
         }
         
+        .payment-method.active {
+            display: block;
+        }
+
         .qr-container {
             text-align: center;
             padding: 15px;
@@ -217,10 +258,15 @@
         .progress {
             height: 8px;
             margin: 10px 0;
+            background-color: #e9ecef;
+            border-radius: 0.25rem;
+            overflow: hidden; /* Ensures the bar stays within bounds */
         }
         
         .progress-bar {
             background-color: var(--primary-color);
+            transition: width 0.5s ease;
+            height: 100%;
         }
         
         .step-indicator {
@@ -234,11 +280,29 @@
         .step {
             text-align: center;
             flex: 1;
+            position: relative;
+            padding: 0 5px;
         }
         
         .step.active {
             color: var(--primary-color);
             font-weight: bold;
+        }
+        
+        .step::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .step.active::after {
+            background-color: var(--primary-color);
         }
         
         .activities-list {
@@ -252,6 +316,7 @@
             columns: 2;
             -webkit-columns: 2;
             -moz-columns: 2;
+            padding-left: 20px;
         }
         
         .confirmation-message {
@@ -261,11 +326,122 @@
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
+            color: #3c763d;
+        }
+
+        .confirmation-message p {
+            margin-bottom: 0;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Estilos para el footer */
+        .footer {
+            background: #111;
+            color: #aaa;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .container-social {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+        }
+        
+        .social-link li {
+            margin: 0 10px;
+        }
+        
+        .social-link li a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #333;
+            color: #fff;
+            line-height: 40px;
+            font-size: 18px;
+            text-align: center; /* Center the icon */
+            transition: all 0.3s;
+        }
+        
+        .social-link li.instagram a:hover { background: #e4405f; }
+        .social-link li.facebook a:hover { background: #3b5999; }
+        .social-link li.gplus a:hover { background: #cd201f; }
+        .social-link li.tiktok a:hover { background: #000; }
+        .social-link li.twitter a:hover { background: #1da1f2; }
+        
+        .twitter-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            max-height: 60px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+        }
+        
+        .copyright a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        /* Estilo para el botón de PayPal */
+        #paypal-container {
+            margin: 20px auto;
+            max-width: 250px;
+            text-align: center;
         }
         
         @media (max-width: 768px) {
             .form-container {
                 padding: 20px;
+            }
+            
+            .encae-header {
+                padding-top: 130px;
             }
             
             .encae-header h1 {
@@ -281,539 +457,672 @@
                 -webkit-columns: 1;
                 -moz-columns: 1;
             }
-        }
-
-        /* Estilo para resaltar errores en el label */
-        .text-danger {
-            color: var(--accent-color) !important;
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-container button {
+                width: 100%;
+            }
+            
+            .main-nav {
+                flex-wrap: wrap;
+                padding-top: 30px;
+            }
+            
+            .main-nav li {
+                margin: 5px 10px;
+            }
+            
+            .small-logo {
+                top: 5px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div style="overflow:hidden;">
-
-        <nav class="main-nav-outer" id="test">
-            <div class="container">
-                <ul class="main-nav">
-                    <li><a href="index.html#test">Inicio</a></li>
-                    <li><a href="nosotros.html">Nosotros</a></li>
-                    <li><a href="Proyecto_actual.html">Proyecto Actual</a></li>
-                    <li class="small-logo">
-                        <a href="#Portfolio">
-                            <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
-                        </a>
-                    </li>
-                    <li><a href="tienda.html">Tienda</a></li>
-                    <li><a href="#Portfolio">Obras</a></li>
-                    <li><a href="contacto.html">Contactos</a></li>
-                </ul>
-                <ul class="main-nav_mobile">
-                    <li><a class="logo_mobile" href="#Portfolio"><img src="img/logo_nav1.png" alt="Logo Laboratorio Teatral D2"></a></li>
-                    <li><a class="res-nav_click" href="#"><i class="fa-bars"></i></a></li>
-                </ul>              
-            </div>       
-        </nav>
-
-        <div class="encae-header">
-            <div class="container">
-                <h1>10mo Encuentro de Creación en Artes Escénicas ENCAE Florecer</h1>
-                <p class="subtitle">Macas, Ecuador • 22 al 24 de agosto de 2025</p>
-                <p class="subtitle">Conviviencia artística con talleres, charlas, actividades comunitarias y producción teatral</p>
-            </div>
-        </div>
-
+    <nav class="main-nav-outer" id="test">
         <div class="container">
-            <div class="form-progress">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="step-indicator">
-                    <div class="step active">Datos personales</div>
-                    <div class="step">Salud</div>
-                    <div class="step">Actividades</div>
-                    <div class="step">Llegada</div>
-                    <div class="step">Autorizaciones</div>
-                    <div class="step">Pago</div>
-                </div>
-            </div>
-            
-            <div class="form-container">
-                <form id="encae-form" novalidate>
-                    <div class="form-section">
-                        <h3><i class="fas fa-user-circle me-2"></i>Datos personales</h3>
-                        <div class="info-box">
-                            <p><i class="fas fa-info-circle me-2"></i>El costo de inscripción es de <strong>$70 USD</strong> que cubre exclusivamente alojamiento y alimentación durante los 3 días. Los talleres y actividades académicas están 100% subvencionados por el ENCAE Florecer.</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="nombre">Nombre completo</label>
-                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="email">Correo electrónico</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="telefono">Teléfono</label>
-                                    <input type="tel" class="form-control" id="telefono" name="telefono" required placeholder="Ej: +593 99 999 9999">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="nacionalidad">Nacionalidad</label>
-                                    <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="edad">Edad</label>
-                                    <input type="number" class="form-control" id="edad" name="edad" min="18" max="40" required>
-                                    <small class="form-text text-muted">Debes tener entre 18 y 40 años para participar</small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="ocupacion">Ocupación principal</label>
-                                    <select class="form-select" id="ocupacion" name="ocupacion" required>
-                                        <option value="">Seleccionar...</option>
-                                        <option>Actor/Actriz</option>
-                                        <option>Director/Directora</option>
-                                        <option>Estudiante de teatro</option>
-                                        <option>Dramaturgo/Dramaturga</option>
-                                        <option>Escenógrafo/Iluminador</option>
-                                        <option>Docente</option>
-                                        <option>Investigador/Investigadora</option>
-                                        <option>Otro</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-section">
-                        <h3><i class="fas fa-heartbeat me-2"></i>Salud y requisitos</h3>
-                        <div class="declaration-box">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="declaracion-edad" name="declaracion_edad" required>
-                                <label class="form-check-label" for="declaracion-edad">
-                                    Confirmo que tengo entre 18 y 40 años
-                                </label>
-                            </div>
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="declaracion-salud" name="declaracion_salud" required>
-                                <label class="form-check-label" for="declaracion-salud">
-                                    Declaro que no tengo discapacidades físicas o mentales que puedan afectar mi participación en actividades intensivas
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="alergias">Alergias alimentarias</label>
-                            <textarea class="form-control" id="alergias" name="alergias" rows="2" placeholder="Si tienes alguna alergia, indícanos cuál"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="dieta">Dieta especial</label>
-                            <select class="form-select" id="dieta" name="dieta">
-                                <option value="">Seleccionar si aplica...</option>
-                                <option>Vegetariano</option>
-                                <option>Vegano</option>
-                                <option>Sin gluten (celíaco)</option>
-                                <option>Sin lácteos</option>
-                                <option>Otra</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-section">
-                        <h3><i class="fas fa-calendar-check me-2"></i>Actividades del encuentro</h3>
-                        <div class="info-box">
-                            <p><i class="fas fa-info-circle me-2"></i>Todas las actividades son obligatorias y forman parte integral de la experiencia de convivencia.</p>
-                        </div>
-                        <div class="activities-list">
-                            <ul>
-                                <li>Clases de yoga</li>
-                                <li>Taller "El cuerpo Barroco del actor y de la escena"</li>
-                                <li>Charla "El Pueblo Upano y hallazgos arqueológicos"</li>
-                                <li>Debate "Situación de las artes escénicas en América Latina"</li>
-                                <li>Visita a los petroglifos de Río Blanco</li>
-                                <li>Siembra simbólica y mingas comunitarias</li>
-                                <li>Charla "Marketing e Inteligencia Artificial"</li>
-                                <li>Producción y presentación de "La flor de la chuquirawa"</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="form-section">
-                        <h3><i class="fas fa-map-marker-alt me-2"></i>Llegada a Macas</h3>
-                        <div class="info-box">
-                            <p><i class="fas fa-info-circle me-2"></i>El transporte interno dentro del cantón Morona (ciudad y parroquia de Río Blanco) está cubierto por la organización. Los participantes solo deben llegar a la ciudad de Macas.</p>
-                            <p><i class="fas fa-info-circle me-2"></i>El aeropuerto de Macas (XMS) opera principalmente vuelos comunitarios/regionales.</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="fecha-llegada">Fecha y hora de llegada estimada</label>
-                                    <input type="datetime-local" class="form-control" id="fecha-llegada" name="fecha_llegada" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="form-label required" for="transporte">Medio de transporte a Macas</label>
-                                    <select class="form-select" id="transporte" name="transporte" required>
-                                        <option value="">Seleccionar...</option>
-                                        <option value="bus">Bus interprovincial (recomendado)</option>
-                                        <option value="auto">Vehículo privado</option>
-                                        <option value="vuelo">Vuelo comunitario (Aeropuerto: XMS)</option>
-                                        <option value="otro">Otro</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="detalles-vuelo" class="payment-method" style="display:none;">
-                            <div class="form-group">
-                                <label class="form-label" for="numero-vuelo">Número de vuelo (si aplica)</label>
-                                <input type="text" class="form-control" id="numero-vuelo" name="numero_vuelo">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-section">
-                        <h3><i class="fas fa-file-signature me-2"></i>Autorizaciones legales</h3>
-                        <div class="declaration-box">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="autorizacion-imagen" name="autorizacion_imagen" required>
-                                <label class="form-check-label" for="autorizacion-imagen">
-                                    Autorizo el uso de mi imagen en fotografías y videos durante el evento para fines promocionales del ENCAE Florecer y Laboratorio Teatral D2.
-                                </label>
-                            </div>
-                            <div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" id="acepto-reglamento" name="acepto_reglamento" required>
-                                <label class="form-check-label" for="acepto-reglamento">
-                                    He leído y acepto el <a href="#" target="_blank">reglamento del evento</a> y las condiciones de convivencia durante los 3 días.
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-section">
-                        <h3><i class="fas fa-credit-card me-2"></i>Método de pago</h3>
-                        <div class="form-group">
-                            <label class="form-label required" id="metodo-pago-label">Selecciona tu método de pago</label>
-                            <div class="d-flex flex-wrap gap-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="metodo_pago" id="transferencia" value="transferencia" required checked>
-                                    <label class="form-check-label" for="transferencia">
-                                        Transferencia bancaria
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="metodo_pago" id="qr" value="qr">
-                                    <label class="form-check-label" for="qr">
-                                        Pago por QR
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="metodo_pago" id="paypal" value="paypal">
-                                    <label class="form-check-label" for="paypal">
-                                        PayPal
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="detalles-transferencia" class="payment-method" style="display:block;">
-                            <h5>Datos para transferencia bancaria</h5>
-                            <p><strong>Banco:</strong> Banco del Pichincha</p>
-                            <p><strong>N° de Cuenta:</strong> 2100123456789012</p>
-                            <p><strong>Tipo:</strong> Cuenta Corriente</p>
-                            <p><strong>A nombre de:</strong> Laboratorio Teatral D2</p>
-                            <div class="form-group mt-3">
-                                <label class="form-label required" for="numero-transferencia">Número de referencia de transferencia</label>
-                                <input type="text" class="form-control" id="numero-transferencia" name="numero_transferencia" required placeholder="Ej: TRF-2025-12345">
-                                <small class="form-text text-muted">Ingresa el código de referencia que te proporcionó tu banco</small>
-                            </div>
-                        </div>
-                        <div id="detalles-qr" class="payment-method">
-                            <h5 class="text-center">Pago por código QR</h5>
-                            <div class="qr-container">
-                                <div class="qr-placeholder">
-                                    <span>Código QR para pagos<br>(Se generará en producción)</span>
-                                </div>
-                                <p>Escanea este código con la aplicación de tu banco</p>
-                            </div>
-                        </div>
-                        <div id="detalles-paypal" class="payment-method">
-                            <h5>Pago con PayPal</h5>
-                            <p>Al enviar el formulario, serás redirigido a PayPal para completar tu pago de forma segura.</p>
-                            <p><i class="fab fa-paypal me-2"></i>Se aplicará una comisión adicional de 3% por este método de pago.</p>
-                        </div>
-                    </div>
-                    <div class="confirmation-message" id="confirmation-message">
-                        <h5><i class="fas fa-check-circle me-2"></i>¡Gracias por tu inscripción!</h5>
-                        <p>Hemos recibido tu solicitud de inscripción para el ENCAE Florecer 2025. Verificaremos la información proporcionada y nos comunicaremos contigo en un máximo de 48 horas para confirmar tu participación.</p>
-                        <p>Si tienes alguna pregunta, no dudes en contactarnos a <a href="mailto:info@labteatrald2.com">info@labteatrald2.com</a>.</p>
-                    </div>
-                    <div class="d-flex justify-content-between mt-5">
-                        <button type="button" class="btn btn-outline-secondary" id="btn-prev">
-                            <i class="fas fa-arrow-left me-2"></i>Anterior
-                        </button>
-                        <button type="submit" class="btn btn-primary" id="btn-submit">
-                            Enviar inscripción<i class="fas fa-paper-plane ms-2"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+            <ul class="main-nav">
+                <li><a href="index.html#test">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="Proyecto_actual.html">Proyecto Actual</a></li>
+                <li class="small-logo">
+                    <a href="#Portfolio">
+                        <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
+                    </a>
+                </li>
+                <li><a href="tienda.html">Tienda</a></li>
+                <li><a href="#Portfolio">Obras</a></li>
+                <li><a href="contacto.html">Contactos</a></li>
+            </ul>
+        </div>          
+    </nav>
 
-        <footer class="footer">
-            <div class="container-social">
-                <ul class="social-link">
-                    <li class="instagram"><a href="https://www.instagram.com/marcos_chamorro_mera/" target="_blank"><i class="fa-instagram"></i></a></li>
-                    <li class="facebook"><a href="https://www.facebook.com/pages/D2/665190513612321?ref=hl" target="_blank"><i class="fa-facebook"></i></a></li>
-                    <li class="gplus"><a href="https://www.youtube.com/@MrMarcosChamorro" target="_blank"><i class="fa-youtube"></i></a></li>
-                    <li class="tiktok"><a href="https://www.tiktok.com/@labtd2" target="_blank"><i class="fa-tiktok"></i></a></li>
-                    <li class="twitter">
-                        <a href="https://x.com/MarcosChamorroM" target="_blank"><img src="img/new-twitter-logo.svg" class="twitter-icon" alt="Twitter"></a>
-                    </li>
-                </ul>
-                <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
-                <span class="copyright">Diseñado por Mk-sistem 2024 <a href="#">Tecnología</a>.</span>
-            </div>
-        </footer>
+    <div class="encae-header">
+        <div class="container">
+            <h1>10mo Encuentro de Creación en Artes Escénicas ENCAE Florecer</h1>
+            <p class="subtitle">Macas, Ecuador • 22 al 24 de agosto de 2025</p>
+            <p class="subtitle">Convivencia artística con talleres, charlas, actividades comunitarias y producción teatral</p>
+        </div>
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function(e) {
-            $('#test').scrollToFixed();
-            $('.res-nav_click').click(function(){
-                $('.main-nav').slideToggle();
-                return false    
-            });
-        });      
-    </script>
+    <div class="container">
+        <div class="form-progress">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 14.28%;" aria-valuenow="14.28" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="step-indicator">
+                <div class="step active" data-step="1">Datos personales</div>
+                <div class="step" data-step="2">Detalles</div>
+                <div class="step" data-step="3">Salud</div>
+                <div class="step" data-step="4">Actividades</div>
+                <div class="step" data-step="5">Llegada</div>
+                <div class="step" data-step="6">Autorizaciones</div>
+                <div class="step" data-step="7">Pago</div>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <form id="encae-form" novalidate>
+                <div class="form-section active" id="section-1">
+                    <h3><i class="fas fa-user-circle me-2"></i>Datos personales</h3>
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle me-2"></i>El costo de inscripción es de <strong>$70 USD</strong> que cubre exclusivamente alojamiento y alimentación durante los 3 días. Los talleres y actividades académicas están 100% subvencionados por el ENCAE Florecer.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="nombre">Nombre completo</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                <div class="invalid-feedback">Por favor ingresa tu nombre completo</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="email">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">Por favor ingresa un correo electrónico válido</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="telefono">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" name="telefono" required placeholder="Ej: +593 99 999 9999">
+                                <div class="invalid-feedback">Por favor ingresa tu número de teléfono</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="nacionalidad">Nacionalidad</label>
+                                <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" required>
+                                <div class="invalid-feedback">Por favor ingresa tu nacionalidad</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="section-2">
+                    <h3><i class="fas fa-id-card me-2"></i>Detalles personales</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="edad">Edad</label>
+                                <input type="number" class="form-control" id="edad" name="edad" min="18" max="40" required>
+                                <div class="invalid-feedback">Debes tener entre 18 y 40 años para participar</div>
+                                <small class="form-text text-muted">Debes tener entre 18 y 40 años para participar</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="ocupacion">Ocupación principal</label>
+                                <select class="form-select" id="ocupacion" name="ocupacion" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option>Actor/Actriz</option>
+                                    <option>Director/Directora</option>
+                                    <option>Estudiante de teatro</option>
+                                    <option>Dramaturgo/Dramaturga</option>
+                                    <option>Escenógrafo/Iluminador</option>
+                                    <option>Docente</option>
+                                    <option>Investigador/Investigadora</option>
+                                    <option>Otro</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor selecciona tu ocupación</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label required" for="experiencia">Experiencia en artes escénicas</label>
+                        <textarea class="form-control" id="experiencia" name="experiencia" rows="3" required placeholder="Describe brevemente tu experiencia en teatro u otras artes escénicas"></textarea>
+                        <div class="invalid-feedback">Por favor describe tu experiencia</div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="section-3">
+                    <h3><i class="fas fa-heartbeat me-2"></i>Salud y requisitos</h3>
+                    <div class="declaration-box">
+                        <div class="form-group form-check">
+                            <input class="form-check-input" type="checkbox" id="declaracion-edad" name="declaracion_edad" required>
+                            <label class="form-check-label" for="declaracion-edad">
+                                Confirmo que tengo entre 18 y 40 años
+                            </label>
+                            <div class="invalid-feedback">Debes confirmar que tienes entre 18 y 40 años</div>
+                        </div>
+                        <div class="form-group form-check mt-2">
+                            <input class="form-check-input" type="checkbox" id="declaracion-salud" name="declaracion_salud" required>
+                            <label class="form-check-label" for="declaracion-salud">
+                                Declaro que no tengo discapacidades físicas o mentales que puedan afectar mi participación en actividades intensivas
+                            </label>
+                            <div class="invalid-feedback">Debes confirmar tu estado de salud</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="alergias">Alergias alimentarias</label>
+                        <textarea class="form-control" id="alergias" name="alergias" rows="2" placeholder="Si tienes alguna alergia, indícanos cuál"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="dieta">Dieta especial</label>
+                        <select class="form-select" id="dieta" name="dieta">
+                            <option value="">Seleccionar si aplica...</option>
+                            <option>Vegetariano</option>
+                            <option>Vegano</option>
+                            <option>Sin gluten (celíaco)</option>
+                            <option>Sin lácteos</option>
+                            <option>Otra</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="section-4">
+                    <h3><i class="fas fa-calendar-check me-2"></i>Actividades del encuentro</h3>
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle me-2"></i>Todas las actividades son obligatorias y forman parte integral de la experiencia de convivencia.</p>
+                    </div>
+                    <div class="activities-list">
+                        <ul>
+                            <li>Clases de yoga</li>
+                            <li>Taller "El cuerpo Barroco del actor y de la escena"</li>
+                            <li>Charla "El Pueblo Upano y hallazgos arqueológicos"</li>
+                            <li>Debate "Situación de las artes escénicas en América Latina"</li>
+                            <li>Visita a los petroglifos de Río Blanco</li>
+                            <li>Siembra simbólica y mingas comunitarias</li>
+                            <li>Charla "Marketing e Inteligencia Artificial"</li>
+                            <li>Producción y presentación de "La flor de la chuquirawa"</li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label required" for="interes">¿Qué actividad te interesa más?</label>
+                        <select class="form-select" id="interes" name="interes" required>
+                            <option value="">Seleccionar...</option>
+                            <option>Taller "El cuerpo Barroco del actor y de la escena"</option>
+                            <option>Charla "El Pueblo Upano y hallazgos arqueológicos"</option>
+                            <option>Debate "Situación de las artes escénicas en América Latina"</option>
+                            <option>Producción teatral</option>
+                            <option>Todas me interesan por igual</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor selecciona la actividad que más te interesa</div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="section-5">
+                    <h3><i class="fas fa-map-marker-alt me-2"></i>Llegada a Macas</h3>
+                    <div class="info-box">
+                        <p><i class="fas fa-info-circle me-2"></i>El transporte interno dentro del cantón Morona (ciudad y parroquia de Río Blanco) está cubierto por la organización. Los participantes solo deben llegar a la ciudad de Macas.</p>
+                        <p><i class="fas fa-info-circle me-2"></i>El aeropuerto de Macas (XMS) opera principalmente vuelos comunitarios/regionales.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="fecha-llegada">Fecha y hora de llegada estimada</label>
+                                <input type="datetime-local" class="form-control" id="fecha-llegada" name="fecha_llegada" required>
+                                <div class="invalid-feedback">Por favor indica tu fecha y hora de llegada</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label required" for="transporte">Medio de transporte a Macas</label>
+                                <select class="form-select" id="transporte" name="transporte" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="bus">Bus interprovincial (recomendado)</option>
+                                    <option value="auto">Vehículo privado</option>
+                                    <option value="vuelo">Vuelo comunitario (Aeropuerto: XMS)</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <div class="invalid-feedback">Por favor selecciona tu medio de transporte</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="detalles-vuelo" class="payment-method">
+                        <div class="form-group">
+                            <label class="form-label" for="numero-vuelo">Número de vuelo (si aplica)</label>
+                            <input type="text" class="form-control" id="numero-vuelo" name="numero_vuelo">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="section-6">
+                    <h3><i class="fas fa-file-signature me-2"></i>Autorizaciones legales</h3>
+                    <div class="declaration-box">
+                        <div class="form-group form-check">
+                            <input class="form-check-input" type="checkbox" id="autorizacion-imagen" name="autorizacion_imagen" required>
+                            <label class="form-check-label" for="autorizacion-imagen">
+                                Autorizo el uso de mi imagen en fotografías y videos durante el evento para fines promocionales del ENCAE Florecer y Laboratorio Teatral D2.
+                            </label>
+                            <div class="invalid-feedback">Debes autorizar el uso de tu imagen</div>
+                        </div>
+                        <div class="form-group form-check mt-3">
+                            <input class="form-check-input" type="checkbox" id="acepto-reglamento" name="acepto_reglamento" required>
+                            <label class="form-check-label" for="acepto-reglamento">
+                                He leído y acepto el <a href="#" target="_blank">reglamento del evento</a> y las condiciones de convivencia durante los 3 días.
+                            </label>
+                            <div class="invalid-feedback">Debes aceptar el reglamento del evento</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="section-7">
+                    <h3><i class="fas fa-credit-card me-2"></i>Método de pago</h3>
+                    <div class="form-group">
+                        <label class="form-label required" id="metodo-pago-label">Selecciona tu método de pago</label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="metodo_pago" id="transferencia" value="transferencia" required>
+                                <label class="form-check-label" for="transferencia">
+                                    Transferencia bancaria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="metodo_pago" id="qr" value="qr">
+                                <label class="form-check-label" for="qr">
+                                    Pago por QR
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="metodo_pago" id="paypal" value="paypal" checked>
+                                <label class="form-check-label" for="paypal">
+                                    PayPal
+                                </label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" id="metodo-pago-feedback">Por favor selecciona un método de pago</div>
+                    </div>
+                    <div id="detalles-transferencia" class="payment-method">
+                        <h5>Datos para transferencia bancaria</h5>
+                        <p><strong>Banco:</strong> Banco del Pichincha</p>
+                        <p><strong>N° de Cuenta:</strong> 2100123456789012</p>
+                        <p><strong>Tipo:</strong> Cuenta Corriente</p>
+                        <p><strong>A nombre de:</strong> Laboratorio Teatral D2</p>
+                        <div class="form-group mt-3">
+                            <label class="form-label required" for="numero-transferencia">Número de referencia de transferencia</label>
+                            <input type="text" class="form-control" id="numero-transferencia" name="numero_transferencia" placeholder="Ej: TRF-2025-12345">
+                            <div class="invalid-feedback">Por favor ingresa el número de referencia de transferencia</div>
+                            <small class="form-text text-muted">Ingresa el código de referencia que te proporcionó tu banco</small>
+                        </div>
+                    </div>
+                    <div id="detalles-qr" class="payment-method">
+                        <h5 class="text-center">Pago por código QR</h5>
+                        <div class="qr-container">
+                            <div class="qr-placeholder">
+                                <span>Código QR para pagos<br>(Se generará en producción)</span>
+                            </div>
+                            <p>Escanea este código con la aplicación de tu banco</p>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="form-label required" for="referencia-qr">Referencia de pago QR</label>
+                            <input type="text" class="form-control" id="referencia-qr" name="referencia_qr" placeholder="Ej: QR-2025-ABCDE">
+                            <div class="invalid-feedback">Por favor ingresa la referencia de pago QR</div>
+                            <small class="form-text text-muted">Ingresa cualquier referencia o confirmación que te dé la app de tu banco</small>
+                        </div>
+                    </div>
+                    <div id="paypal-container" class="payment-method active">
+                        <div id="paypal-button-container"></div>
+                        <div class="invalid-feedback" id="paypal-feedback" style="display: none;">Por favor completa el pago con PayPal.</div>
+                        <input type="hidden" id="paypal-completed" name="paypal_completed" value="false">
+                    </div>
+                </div>
+
+                <div class="confirmation-message" id="confirmation-message">
+                    <h4>¡Inscripción completada con éxito!</h4>
+                    <p>Gracias por inscribirte al 10mo Encuentro de Creación en Artes Escénicas ENCAE Florecer.</p>
+                    <p>Hemos recibido tus datos y el pago (si aplica). En breve recibirás un correo electrónico con los detalles y próximos pasos. ¡Nos vemos en Macas!</p>
+                </div>
+
+                <div class="loading-spinner" id="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Enviando tu inscripción...</p>
+                </div>
+
+                <div class="btn-container">
+                    <button type="button" id="prev-btn" class="btn btn-outline-secondary" style="display: none;"><i class="fas fa-chevron-left me-2"></i>Anterior</button>
+                    <button type="button" id="next-btn" class="btn btn-primary">Siguiente<i class="fas fa-chevron-right ms-2"></i></button>
+                    <button type="submit" id="submit-btn" class="btn btn-primary" style="display: none;"><i class="fas fa-paper-plane me-2"></i>Enviar inscripción</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-social">
+            <div class="footer-logo">
+                <a href="#hero"><img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"></a>
+            </div>
+            <ul class="social-link">
+                <li class="instagram"><a href="https://www.instagram.com/laboratoriod2" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li class="facebook"><a href="https://www.facebook.com/laboratoriod2" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                <li class="gplus"><a href="https://www.youtube.com/@LaboratorioTeatralD2" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                <li class="tiktok"><a href="https://www.tiktok.com/@laboratoriod2" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+                <li class="twitter"><a href="#"><img src="img/x-twitter.svg" class="twitter-icon" alt="X Twitter icon"></a></li>
+            </ul>
+            <div class="copyright">
+                &copy; 2025 Laboratorio Teatral D2. Todos los derechos reservados. | Diseño por <a href="https://www.linkedin.com/in/steeven-palacios-b7b55b206/" target="_blank">Steeven Palacios</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        wow = new WOW({
-            animateClass: 'animated',
-            offset: 100
-        });
-        wow.init();
-        document.getElementById('').onclick = function() {
-            var section = document.createElement('section');
-            section.className = 'wow fadeInDown';
-            this.parentNode.insertBefore(section, this);
-        };
-    </script>
+        let currentSection = 1;
+        const totalSections = 7;
+        const form = document.getElementById('encae-form');
+        const sections = document.querySelectorAll('.form-section');
+        const progressBar = document.querySelector('.progress-bar');
+        const stepIndicators = document.querySelectorAll('.step');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const confirmationMessage = document.getElementById('confirmation-message');
 
-    <script type="text/javascript">
-        $(window).load(function(){
-            $('.main-nav li a').bind('click',function(event){
-                var $anchor = $(this);
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top - 102
-                }, 1500,'easeInOutExpo');
-                event.preventDefault();
-            });
-        });
-    </script>
+        // Payment method specific elements
+        const paymentRadios = document.querySelectorAll('input[name="metodo_pago"]');
+        const transferenciaDetails = document.getElementById('detalles-transferencia');
+        const qrDetails = document.getElementById('detalles-qr');
+        const paypalContainer = document.getElementById('paypal-container');
+        const paypalButtonContainer = document.getElementById('paypal-button-container');
+        const paypalCompletedInput = document.getElementById('paypal-completed');
+        const paypalFeedback = document.getElementById('paypal-feedback');
+        const numeroTransferencia = document.getElementById('numero-transferencia');
+        const referenciaQr = document.getElementById('referencia-qr');
 
-    <script type="text/javascript">
-        $(window).load(function(){
-            var $container = $('.portfolioContainer'),
-                $body = $('body'),
-                colW = 375,
-                columns = null;
-            $container.isotope({
-                resizable: true,
-                masonry: {
-                    columnWidth: colW
+        // Transportation details
+        const transporteSelect = document.getElementById('transporte');
+        const detallesVuelo = document.getElementById('detalles-vuelo');
+        const numeroVuelo = document.getElementById('numero-vuelo');
+
+        function showSection(sectionNumber) {
+            sections.forEach((section, index) => {
+                section.classList.remove('active');
+                if (index + 1 === sectionNumber) {
+                    section.classList.add('active');
                 }
             });
-            $(window).smartresize(function(){
-                var currentColumns = Math.floor(($body.width() - 30) / colW);
-                if (currentColumns !== columns) {
-                    columns = currentColumns;
-                    $container.width(columns * colW).isotope('reLayout');
+
+            stepIndicators.forEach((step, index) => {
+                step.classList.remove('active');
+                if (index + 1 === sectionNumber) {
+                    step.classList.add('active');
                 }
-            }).smartresize();
-            $('.portfolioFilter a').click(function(){
-                $('.portfolioFilter .current').removeClass('current');
-                $(this).addClass('current');
-                var selector = $(this).attr('data-filter');
-                $container.isotope({
-                    filter: selector,
-                });
-                return false;
             });
-        });
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('encae-form');
-            const sections = document.querySelectorAll('.form-section');
-            const prevBtn = document.getElementById('btn-prev');
-            const submitBtn = document.getElementById('btn-submit');
-            const progressBar = document.querySelector('.progress-bar');
-            const stepIndicators = document.querySelectorAll('.step');
-            const confirmationMessage = document.getElementById('confirmation-message');
-            let currentSection = 0;
-            
-            showSection(currentSection);
-            
-            document.getElementById('transporte').addEventListener('change', function() {
-                const vueloDetails = document.getElementById('detalles-vuelo');
-                vueloDetails.style.display = this.value === 'vuelo' ? 'block' : 'none';
+
+            updateProgressBar();
+            updateButtons();
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top on section change
+        }
+
+        function updateProgressBar() {
+            const progress = (currentSection / totalSections) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressBar.setAttribute('aria-valuenow', progress);
+        }
+
+        function updateButtons() {
+            prevBtn.style.display = currentSection === 1 ? 'none' : 'block';
+            nextBtn.style.display = currentSection === totalSections ? 'none' : 'block';
+            submitBtn.style.display = currentSection === totalSections ? 'block' : 'none';
+        }
+
+        function validateSection(sectionNumber) {
+            const currentSectionEl = document.getElementById(`section-${sectionNumber}`);
+            let isValid = true;
+            const inputs = currentSectionEl.querySelectorAll('input[required], select[required], textarea[required]');
+            const checkboxes = currentSectionEl.querySelectorAll('input[type="checkbox"][required]');
+            const radioGroups = {};
+
+            // Reset validation state for current section
+            currentSectionEl.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('was-validated');
+            });
+            currentSectionEl.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(field => {
+                field.classList.remove('is-invalid');
+                const feedback = field.closest('.form-group')?.querySelector('.invalid-feedback');
+                if (feedback) feedback.style.display = 'none';
             });
             
-            document.querySelectorAll('input[name="metodo_pago"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    document.querySelectorAll('.payment-method').forEach(el => {
-                        el.style.display = 'none';
-                    });
-                    if (this.checked) {
-                        const detailsId = `detalles-${this.value}`;
-                        document.getElementById(detailsId).style.display = 'block';
+            inputs.forEach(input => {
+                const formGroup = input.closest('.form-group');
+                formGroup?.classList.add('was-validated'); // Add was-validated to show feedback
+                if (!input.checkValidity()) {
+                    input.classList.add('is-invalid');
+                    const feedback = formGroup?.querySelector('.invalid-feedback');
+                    if (feedback) feedback.style.display = 'block';
+                    isValid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+                    const feedback = formGroup?.querySelector('.invalid-feedback');
+                    if (feedback) feedback.style.display = 'none';
+                }
+            });
+
+            checkboxes.forEach(checkbox => {
+                const formGroup = checkbox.closest('.form-group');
+                formGroup?.classList.add('was-validated');
+                if (!checkbox.checked) {
+                    checkbox.classList.add('is-invalid');
+                    const feedback = formGroup?.querySelector('.invalid-feedback');
+                    if (feedback) feedback.style.display = 'block';
+                    isValid = false;
+                } else {
+                    checkbox.classList.remove('is-invalid');
+                    const feedback = formGroup?.querySelector('.invalid-feedback');
+                    if (feedback) feedback.style.display = 'none';
+                }
+            });
+
+            // Handle radio button validation specifically for the payment section (section 7)
+            if (sectionNumber === 7) {
+                const paymentSelected = document.querySelector('input[name="metodo_pago"]:checked');
+                const paymentFeedbackEl = document.getElementById('metodo-pago-feedback');
+                if (!paymentSelected) {
+                    paymentFeedbackEl.style.display = 'block';
+                    isValid = false;
+                } else {
+                    paymentFeedbackEl.style.display = 'none';
+                    // Validate specific fields based on selected payment method
+                    if (paymentSelected.value === 'transferencia') {
+                        if (!numeroTransferencia.value.trim()) {
+                            numeroTransferencia.classList.add('is-invalid');
+                            numeroTransferencia.closest('.form-group').classList.add('was-validated');
+                            numeroTransferencia.nextElementSibling.style.display = 'block';
+                            isValid = false;
+                        } else {
+                            numeroTransferencia.classList.remove('is-invalid');
+                            numeroTransferencia.nextElementSibling.style.display = 'none';
+                        }
+                    } else if (paymentSelected.value === 'qr') {
+                        if (!referenciaQr.value.trim()) {
+                            referenciaQr.classList.add('is-invalid');
+                            referenciaQr.closest('.form-group').classList.add('was-validated');
+                            referenciaQr.nextElementSibling.style.display = 'block';
+                            isValid = false;
+                        } else {
+                            referenciaQr.classList.remove('is-invalid');
+                            referenciaQr.nextElementSibling.style.display = 'none';
+                        }
+                    } else if (paymentSelected.value === 'paypal') {
+                        if (paypalCompletedInput.value !== 'true') {
+                            paypalFeedback.style.display = 'block';
+                            isValid = false;
+                        } else {
+                            paypalFeedback.style.display = 'none';
+                        }
                     }
-                });
-            });
-            
-            prevBtn.addEventListener('click', function() {
-                if (currentSection > 0) {
-                    currentSection--;
+                }
+            }
+
+            return isValid;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSection > 1) {
+                currentSection--;
+                showSection(currentSection);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (validateSection(currentSection)) {
+                if (currentSection < totalSections) {
+                    currentSection++;
                     showSection(currentSection);
                 }
-            });
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                if (validateSection(currentSection)) {
-                    if (currentSection < sections.length - 1) {
-                        currentSection++;
-                        showSection(currentSection);
-                    } else {
-                        // Recolectar datos del formulario
-                        const formData = {
-                            nombre: document.getElementById('nombre').value,
-                            email: document.getElementById('email').value,
-                            telefono: document.getElementById('telefono').value,
-                            nacionalidad: document.getElementById('nacionalidad').value,
-                            edad: document.getElementById('edad').value,
-                            ocupacion: document.getElementById('ocupacion').value,
-                            declaracion_edad: document.getElementById('declaracion-edad').checked,
-                            declaracion_salud: document.getElementById('declaracion-salud').checked,
-                            alergias: document.getElementById('alergias').value,
-                            dieta: document.getElementById('dieta').value,
-                            fecha_llegada: document.getElementById('fecha-llegada').value,
-                            transporte: document.getElementById('transporte').value,
-                            numero_vuelo: document.getElementById('numero-vuelo').value,
-                            autorizacion_imagen: document.getElementById('autorizacion-imagen').checked,
-                            acepto_reglamento: document.getElementById('acepto-reglamento').checked,
-                            metodo_pago: document.querySelector('input[name="metodo_pago"]:checked').value,
-                            numero_transferencia: document.getElementById('numero-transferencia').value
-                        };
-                        
-                        // Enviar datos al Google Apps Script
-                        fetch('https://script.google.com/macros/s/AKfycbySQL1D2N8xPILv0uJqIsLTeZntrumg5aRdq9pYipkPQgAiHC0aaZ3HJu_eLkfFofwh/exec', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(formData)
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.status === 'success') {
-                                confirmationMessage.style.display = 'block';
-                                submitBtn.style.display = 'none';
-                                prevBtn.style.display = 'none';
-                                confirmationMessage.scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                                alert('Error al enviar el formulario: ' + data.message);
-                            }
-                        })
-                        .catch(error => {
-                            alert('Error al enviar el formulario: ' + error);
-                        });
-                    }
+            } else {
+                // Scroll to the first invalid field
+                const firstInvalid = document.querySelector('.form-section.active .is-invalid');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
-            });
-            
-            function showSection(index) {
-                sections.forEach(section => {
-                    section.style.display = 'none';
-                });
-                confirmationMessage.style.display = 'none';
-                submitBtn.style.display = 'block';
-                prevBtn.style.display = index === 0 ? 'none' : 'inline-block';
-                sections[index].style.display = 'block';
-                submitBtn.textContent = index === sections.length - 1 ? 'Enviar inscripción' : 'Continuar';
-                const progress = (index / (sections.length - 1)) * 100;
-                progressBar.style.width = `${progress}%`;
-                progressBar.setAttribute('aria-valuenow', progress);
-                stepIndicators.forEach((step, i) => {
-                    if (i <= index) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            function validateSection(index) {
-                const section = sections[index];
-                const inputs = section.querySelectorAll('input, select, textarea');
-                let isValid = true;
-                
-                inputs.forEach(input => {
-                    if (input.hasAttribute('required') && !input.value) {
-                        isValid = false;
-                        input.classList.add('is-invalid');
-                    } else {
-                        input.classList.remove('is-invalid');
-                    }
-                    
-                    if (input.id === 'edad') {
-                        const age = parseInt(input.value);
-                        if (age < 18 || age > 40) {
-                            isValid = false;
-                            input.classList.add('is-invalid');
-                        }
-                    }
-                    
-                    if (input.type === 'checkbox' && input.required && !input.checked) {
-                        isValid = false;
-                        input.classList.add('is-invalid');
-                    }
-                });
-                
-                if (index === 5) {
-                    const selectedMethod = document.querySelector('input[name="metodo_pago"]:checked');
-                    const metodoPagoLabel = document.getElementById('metodo-pago-label');
-                    if (!selectedMethod) {
-                        isValid = false;
-                        metodoPagoLabel.classList.add('text-danger');
-                    } else {
-                        metodoPagoLabel.classList.remove('text-danger');
-                        if (selectedMethod.value === 'transferencia') {
-                            const transferInput = document.getElementById('numero-transferencia');
-                            if (!transferInput.value) {
-                                isValid = false;
-                                transferInput.classList.add('is-invalid');
-                            } else {
-                                transferInput.classList.remove('is-invalid');
-                            }
-                        }
-                    }
-                }
-                
-                return isValid;
             }
         });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!validateSection(totalSections)) {
+                // Scroll to the first invalid field
+                const firstInvalid = document.querySelector('.form-section.active .is-invalid');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+
+            // Show loading spinner
+            loadingSpinner.style.display = 'block';
+            submitBtn.disabled = true;
+            prevBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // You would typically send this data to a backend server
+            // For demonstration, we'll simulate an API call
+            console.log("Formulario enviado:", data);
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000)); // 2 second delay
+
+                // Hide form and show confirmation
+                sections.forEach(section => section.style.display = 'none');
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'none';
+                loadingSpinner.style.display = 'none';
+                confirmationMessage.style.display = 'block';
+
+                form.reset(); // Clear the form
+                paypalCompletedInput.value = 'false'; // Reset PayPal status
+
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+                alert('Hubo un error al procesar tu inscripción. Por favor, inténtalo de nuevo.');
+                loadingSpinner.style.display = 'none';
+                submitBtn.disabled = false;
+                prevBtn.disabled = false;
+            }
+        });
+
+        // Handle payment method display
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                transferenciaDetails.classList.remove('active');
+                qrDetails.classList.remove('active');
+                paypalContainer.classList.remove('active');
+
+                // Reset validation and values for payment fields
+                numeroTransferencia.value = '';
+                numeroTransferencia.classList.remove('is-invalid');
+                numeroTransferencia.closest('.form-group')?.classList.remove('was-validated');
+                numeroTransferencia.nextElementSibling.style.display = 'none';
+
+                referenciaQr.value = '';
+                referenciaQr.classList.remove('is-invalid');
+                referenciaQr.closest('.form-group')?.classList.remove('was-validated');
+                referenciaQr.nextElementSibling.style.display = 'none';
+
+                paypalCompletedInput.value = 'false';
+                paypalFeedback.style.display = 'none';
+
+
+                if (radio.value === 'transferencia') {
+                    transferenciaDetails.classList.add('active');
+                    numeroTransferencia.setAttribute('required', 'true');
+                    referenciaQr.removeAttribute('required');
+                } else if (radio.value === 'qr') {
+                    qrDetails.classList.add('active');
+                    referenciaQr.setAttribute('required', 'true');
+                    numeroTransferencia.removeAttribute('required');
+                } else if (radio.value === 'paypal') {
+                    paypalContainer.classList.add('active');
+                    numeroTransferencia.removeAttribute('required');
+                    referenciaQr.removeAttribute('required');
+                }
+            });
+        });
+
+        // Handle transport type display
+        transporteSelect.addEventListener('change', () => {
+            if (transporteSelect.value === 'vuelo') {
+                detallesVuelo.classList.add('active');
+                numeroVuelo.setAttribute('required', 'true');
+            } else {
+                detallesVuelo.classList.remove('active');
+                numeroVuelo.removeAttribute('required');
+                numeroVuelo.value = ''; // Clear value when not needed
+                numeroVuelo.classList.remove('is-invalid');
+                numeroVuelo.closest('.form-group')?.classList.remove('was-validated');
+            }
+        });
+
+        // Initialize PayPal button
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '70.00' // Fixed cost of $70 USD
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transacción completada por ' + details.payer.name.given_name);
+                    paypalCompletedInput.value = 'true'; // Mark PayPal payment as complete
+                    paypalFeedback.style.display = 'none'; // Hide validation feedback
+                });
+            },
+            onError: function(err) {
+                console.error('Error de PayPal:', err);
+                paypalCompletedInput.value = 'false'; // Mark PayPal payment as incomplete
+                alert('Hubo un error con el pago de PayPal. Por favor, inténtalo de nuevo.');
+            }
+        }).render('#paypal-button-container');
+
+        // Initial setup
+        showSection(currentSection);
     </script>
 </body>
 </html>
