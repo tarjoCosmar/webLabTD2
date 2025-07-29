@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+        <link href="css/responsive.css" rel="stylesheet" type="text/css">
+        <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+
     
     <script src="https://www.paypal.com/sdk/js?client-id=BAA1T3wZTeHi5KhqFa6i9Y3ApgAaY_hStgrmXJbjmK5UfPuGhDK8i3CLWyZfu5AjxQ6GZ2iR736vUxQa1M&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
     
@@ -20,73 +28,64 @@
             --light-color: #f8f9fa;
             --dark-color: #2c3e50;
         }
-        
-        /* Estilos para la navegación */
-        .main-nav-outer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .main-nav {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .main-nav li {
-            margin: 0 15px;
-        }
-        
-        .main-nav li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        
-        .main-nav li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .small-logo {
-            position: absolute;
-            left: 50%;
-            top: -15px;
-            transform: translateX(-50%);
-        }
-        
-        .small-logo img {
-            height: 60px;
-        }
-        
-        .encae-header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1546111243-1e18006bd839?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: white;
-            padding: 100px 0 60px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .encae-header h1 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 15px;
-        }
-        
-        .encae-header .subtitle {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
+       /* Estilo para encae header */ 
+    .encae-header {
+    background: #05d8c5;
+    color: #2c3e50;
+    padding: 100px 0 80px;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative; /* Hace que .encae-header sea el contenedor de referencia para el logo */
+}
+
+.encae-logo {
+    position: absolute;
+    bottom: -80px; /* Distancia desde la parte inferior de .encae-header */
+    left: 10px; /* Distancia desde la izquierda de .encae-header */
+    max-width: 200px; /* Ajusta según el tamaño de tu logo */
+    height: auto; /* Mantiene la proporción */
+    z-index: 10; /* Asegura que el logo esté por encima de otros elementos */
+}
+
+.encae-header h1 {
+    font-family: 'Montserrat', sans-serif; /* Fuente moderna y bold */
+    color: #012e67;
+    font: size 40px; /* Tamaño grande para el título */
+    font-weight: 700; /* Peso bold */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    line-height: 1.2; /* Mejor legibilidad */
+}
+
+.encae-header .subtitle {
+    font-family: 'Open Sans', sans-serif; /* Fuente clara y legible */
+    font-size: 18px; /* Tamaño más pequeño para subtítulos */
+    font-weight: 400; /* Peso regular */
+    margin-bottom: 10px; /* Espacio entre subtítulos */
+    line-height: 1.4; /* Mejor legibilidad */
+}
+
+.container {
+    max-width: 1200px; /* Ajusta según tu diseño */
+    margin: 0 auto;
+    padding: 0 15px; /* Asegura un padding consistente */
+    position: relative; /* Permite que el logo se posicione dentro de .container si prefieres */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .encae-header {
+        padding: 80px 0 60px; /* Reduce el padding en móviles */
+    }
+
+    .encae-logo {
+        max-width: 120px; /* Tamaño más pequeño para móviles */
+        bottom: -60px;
+        left: 5px;
+    }
+}       
+
+
+
         .form-container {
             max-width: 900px;
             margin: 0 auto 50px;
@@ -360,74 +359,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Estilos para el footer */
-        .footer {
-            background: #111;
-            color: #aaa;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        .container-social {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .social-link {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px;
-        }
-        
-        .social-link li {
-            margin: 0 10px;
-        }
-        
-        .social-link li a {
-            display: block;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #333;
-            color: #fff;
-            line-height: 40px;
-            font-size: 18px;
-            text-align: center; /* Center the icon */
-            transition: all 0.3s;
-        }
-        
-        .social-link li.instagram a:hover { background: #e4405f; }
-        .social-link li.facebook a:hover { background: #3b5999; }
-        .social-link li.gplus a:hover { background: #cd201f; }
-        .social-link li.tiktok a:hover { background: #000; }
-        .social-link li.twitter a:hover { background: #1da1f2; }
-        
-        .twitter-icon {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-        }
-        
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            max-height: 60px;
-        }
-        
-        .copyright {
-            font-size: 14px;
-        }
-        
-        .copyright a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-        
         /* Estilo para el botón de PayPal */
         #paypal-container {
             margin: 20px auto;
@@ -483,27 +414,33 @@
     </style>
 </head>
 <body>
-    <nav class="main-nav-outer" id="test">
-        <div class="container">
-            <ul class="main-nav">
-                <li><a href="index.html#test">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="Proyecto_actual.html">Proyecto Actual</a></li>
-                <li class="small-logo">
-                    <a href="#Portfolio">
-                        <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
-                    </a>
-                </li>
-                <li><a href="tienda.html">Tienda</a></li>
-                <li><a href="#Portfolio">Obras</a></li>
-                <li><a href="contacto.html">Contactos</a></li>
-            </ul>
-        </div>          
-    </nav>
-
+    <nav class="main-nav-outer" id="test"><!--main-nav-start-->
+                <div class="container">
+                    <ul class="main-nav">
+                        <li><a href="index.html#test">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="Proyecto_actual.html">Proyecto Actual</a></li>
+                        <li class="small-logo">
+                            <a href="#service">
+                                <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
+                            </a>
+                        </li>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="obras.html">Obras</a></li>
+                        <li><a href="contacto.html">Contactos</a></li>
+                        <li><a href="#10moencae">10moENCAE</a></li>
+                    </ul>
+                    <ul class="main-nav_mobile">
+                        <li><a class="logo_mobile" href="#"><img src="img/logo_nav1.png" alt="Logo Laboratorio Teatral D2"></a></li>
+                        <li><a class="res-nav_click" href="#"><i class="fa-bars"></i></a></li>
+                    </ul>              
+                </div>       
+    </nav><!--main-nav-end-->
+    
     <div class="encae-header">
         <div class="container">
-            <h1>10mo Encuentro de Creación en Artes Escénicas ENCAE Florecer</h1>
+            <img src="img/10moencae/flor.png" alt="Logo ENCAE" class="encae-logo">
+            <h1>10mo ENcuentro de Creación en Artes Escénicas ENCAE Florecer</h1>
             <p class="subtitle">Macas, Ecuador • 22 al 24 de agosto de 2025</p>
             <p class="subtitle">Convivencia artística con talleres, charlas, actividades comunitarias y producción teatral</p>
         </div>
@@ -753,9 +690,9 @@
                     <div id="detalles-transferencia" class="payment-method">
                         <h5>Datos para transferencia bancaria</h5>
                         <p><strong>Banco:</strong> Banco del Pichincha</p>
-                        <p><strong>N° de Cuenta:</strong> 2100123456789012</p>
+                        <p><strong>N° de Cuenta:</strong> 2202622110</p>
                         <p><strong>Tipo:</strong> Cuenta Corriente</p>
-                        <p><strong>A nombre de:</strong> Laboratorio Teatral D2</p>
+                        <p><strong>A nombre de:</strong> Elizabeth Alejandra Pazmiño Freire</p>
                         <div class="form-group mt-3">
                             <label class="form-label required" for="numero-transferencia">Número de referencia de transferencia</label>
                             <input type="text" class="form-control" id="numero-transferencia" name="numero_transferencia" placeholder="Ej: TRF-2025-12345">
@@ -763,13 +700,13 @@
                             <small class="form-text text-muted">Ingresa el código de referencia que te proporcionó tu banco</small>
                         </div>
                     </div>
+
                     <div id="detalles-qr" class="payment-method">
                         <h5 class="text-center">Pago por código QR</h5>
                         <div class="qr-container">
-                            <div class="qr-placeholder">
-                                <span>Código QR para pagos<br>(Se generará en producción)</span>
+                            <div class="container">
+                                <img src="img/10moencae/qrPichincha.jpg" alt="Logo ENCAE" class="encae-logo">
                             </div>
-                            <p>Escanea este código con la aplicación de tu banco</p>
                         </div>
                         <div class="form-group mt-3">
                             <label class="form-label required" for="referencia-qr">Referencia de pago QR</label>
@@ -778,6 +715,7 @@
                             <small class="form-text text-muted">Ingresa cualquier referencia o confirmación que te dé la app de tu banco</small>
                         </div>
                     </div>
+
                     <div id="paypal-container" class="payment-method active">
                         <div id="paypal-button-container"></div>
                         <div class="invalid-feedback" id="paypal-feedback" style="display: none;">Por favor completa el pago con PayPal.</div>
@@ -805,23 +743,22 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container-social">
-            <div class="footer-logo">
-                <a href="#hero"><img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"></a>
-            </div>
-            <ul class="social-link">
-                <li class="instagram"><a href="https://www.instagram.com/laboratoriod2" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                <li class="facebook"><a href="https://www.facebook.com/laboratoriod2" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                <li class="gplus"><a href="https://www.youtube.com/@LaboratorioTeatralD2" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                <li class="tiktok"><a href="https://www.tiktok.com/@laboratoriod2" target="_blank"><i class="fab fa-tiktok"></i></a></li>
-                <li class="twitter"><a href="#"><img src="img/x-twitter.svg" class="twitter-icon" alt="X Twitter icon"></a></li>
-            </ul>
-            <div class="copyright">
-                &copy; 2025 Laboratorio Teatral D2. Todos los derechos reservados. | Diseño por <a href="https://www.linkedin.com/in/steeven-palacios-b7b55b206/" target="_blank">Steeven Palacios</a>
-            </div>
-        </div>
-    </footer>
+    <footer class="footer"><!--copyright-©-->
+                <div class="container-social">
+                    <ul class="social-link">
+                        <li class="instagram"><a href="https://www.instagram.com/marcos_chamorro_mera/" target="_blank"><i class="fa-instagram"></i></a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/pages/D2/665190513612321?ref=hl" target="_blank"><i class="fa-facebook"></i></a></li>
+                        <li class="gplus"><a href="https://www.youtube.com/@MrMarcosChamorro" target="_blank"><i class="fa-youtube"></i></a></li>
+                        <li class="tiktok"><a href="https://www.tiktok.com/@labtd2" target="_blank"><i class="fa-tiktok"></i></a></li>
+                        <li class="twitter">
+                            <a href="https://x.com/MarcosChamorroM" target="_blank"><img src="img/new-twitter-logo.svg" class="twitter-icon" alt="Twitter"></a>
+                        </li>
+                    </ul>
+                    
+                    <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
+                    <span class="copyright">Diseñado por Mk-sistem <a href="#">Tecnología.</a> 2025</span>
+                </div>
+    </footer><!--copyrigth-end-->
 
     <script>
     let currentSection = 1;
