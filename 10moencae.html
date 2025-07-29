@@ -899,7 +899,8 @@ function validateSection(sectionNumber) {
         const feedback = field.closest('.form-group')?.querySelector('.invalid-feedback');
         if (feedback) feedback.style.display = 'none';
     });
-    
+
+    // Validate inputs
     inputs.forEach(input => {
         const formGroup = input.closest('.form-group');
         formGroup?.classList.add('was-validated');
@@ -915,6 +916,7 @@ function validateSection(sectionNumber) {
         }
     });
 
+    // Validate checkboxes
     checkboxes.forEach(checkbox => {
         const formGroup = checkbox.closest('.form-group');
         formGroup?.classList.add('was-validated');
@@ -930,6 +932,7 @@ function validateSection(sectionNumber) {
         }
     });
 
+    // Validate payment section
     if (sectionNumber === 7) {
         const paymentSelected = document.querySelector('input[name="metodo_pago"]:checked');
         const paymentFeedbackEl = document.getElementById('metodo-pago-feedback');
@@ -995,12 +998,19 @@ nextBtn.addEventListener('click', () => {
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!validateSection(totalSections)) {
-        const firstInvalid = document.querySelector('.form-section.active .is-invalid');
-        if (firstInvalid) {
-            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Validate all sections to ensure no required fields are missed
+    for (let i = 1; i <= totalSections; i++) {
+        if (!validateSection(i)) {
+            const firstInvalid = document.querySelector(`#section-${i} .is-invalid`);
+            if (firstInvalid) {
+                currentSection = i;
+                showSection(i);
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            console.log(`Validación falló en la sección ${i}`);
+            return;
         }
-        return;
     }
 
     loadingSpinner.style.display = 'block';
@@ -1010,10 +1020,23 @@ form.addEventListener('submit', async (e) => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
+    // Convert checkbox values to 'true' or 'false'
+    data.declaracion_edad = document.getElementById('declaracion-edad').checked ? 'true' : 'false';
+    data.declaracion_salud = document.getElementById('declaracion-salud').checked ? 'true' : 'false';
+    data.autorizacion_imagen = document.getElementById('autorizacion-imagen').checked ? 'true' : 'false';
+    data.acepto_reglamento = document.getElementById('acepto-reglamento').checked ? 'true' : 'false';
+
+    // Depuración: Verificar valores de las casillas
+    console.log("Valores de las casillas:", {
+        declaracion_edad: data.declaracion_edad,
+        declaracion_salud: data.declaracion_salud,
+        autorizacion_imagen: data.autorizacion_imagen,
+        acepto_reglamento: data.acepto_reglamento
+    });
     console.log("Datos del formulario a enviar:", data);
 
     try {
-        const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbwDyGz9leQ2Ih277-EtJ6cDJjBzZ-J5J1cdz8TZsX4_l1SjBs9ucTiCxTWFEYAnkK6KBQ/exec';
+        const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbyHSdwVHqYx8wF95L7JvrwtkuCMkL5-SNQJo42BkqLVpiXuswhhlaEi55HnjCoiERjzGA/exec';
 
         const response = await fetch(googleAppsScriptURL, {
             method: 'POST',
@@ -1117,6 +1140,6 @@ paypal.Buttons({
 }).render('#paypal-button-container');
 
 showSection(currentSection);
-    </script>
+</script>
 </body>
 </html>
