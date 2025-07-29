@@ -825,321 +825,298 @@
 
     <script>
     let currentSection = 1;
-    const totalSections = 7;
-    const form = document.getElementById('encae-form');
-    const sections = document.querySelectorAll('.form-section');
-    const progressBar = document.querySelector('.progress-bar');
-    const stepIndicators = document.querySelectorAll('.step');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const submitBtn = document.getElementById('submit-btn');
-    const loadingSpinner = document.getElementById('loading-spinner');
-    const confirmationMessage = document.getElementById('confirmation-message');
+const totalSections = 7;
+const form = document.getElementById('encae-form');
+const sections = document.querySelectorAll('.form-section');
+const progressBar = document.querySelector('.progress-bar');
+const stepIndicators = document.querySelectorAll('.step');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const submitBtn = document.getElementById('submit-btn');
+const loadingSpinner = document.getElementById('loading-spinner');
+const confirmationMessage = document.getElementById('confirmation-message');
 
-    // Payment method specific elements
-    const paymentRadios = document.querySelectorAll('input[name="metodo_pago"]');
-    const transferenciaDetails = document.getElementById('detalles-transferencia');
-    const qrDetails = document.getElementById('detalles-qr');
-    const paypalContainer = document.getElementById('paypal-container');
-    const paypalButtonContainer = document.getElementById('paypal-button-container');
-    const paypalCompletedInput = document.getElementById('paypal-completed');
-    const paypalFeedback = document.getElementById('paypal-feedback');
-    const numeroTransferencia = document.getElementById('numero-transferencia');
-    const referenciaQr = document.getElementById('referencia-qr');
+// Payment method specific elements
+const paymentRadios = document.querySelectorAll('input[name="metodo_pago"]');
+const transferenciaDetails = document.getElementById('detalles-transferencia');
+const qrDetails = document.getElementById('detalles-qr');
+const paypalContainer = document.getElementById('paypal-container');
+const paypalButtonContainer = document.getElementById('paypal-button-container');
+const paypalCompletedInput = document.getElementById('paypal-completed');
+const paypalFeedback = document.getElementById('paypal-feedback');
+const numeroTransferencia = document.getElementById('numero-transferencia');
+const referenciaQr = document.getElementById('referencia-qr');
 
-    // Transportation details
-    const transporteSelect = document.getElementById('transporte');
-    const detallesVuelo = document.getElementById('detalles-vuelo');
-    const numeroVuelo = document.getElementById('numero-vuelo');
+// Transportation details
+const transporteSelect = document.getElementById('transporte');
+const detallesVuelo = document.getElementById('detalles-vuelo');
+const numeroVuelo = document.getElementById('numero-vuelo');
 
-    function showSection(sectionNumber) {
-        sections.forEach((section, index) => {
-            section.classList.remove('active');
-            if (index + 1 === sectionNumber) {
-                section.classList.add('active');
-            }
-        });
+function showSection(sectionNumber) {
+    sections.forEach((section, index) => {
+        section.classList.remove('active');
+        if (index + 1 === sectionNumber) {
+            section.classList.add('active');
+        }
+    });
 
-        stepIndicators.forEach((step, index) => {
-            step.classList.remove('active');
-            if (index + 1 === sectionNumber) {
-                step.classList.add('active');
-            }
-        });
+    stepIndicators.forEach((step, index) => {
+        step.classList.remove('active');
+        if (index + 1 === sectionNumber) {
+            step.classList.add('active');
+        }
+    });
 
-        updateProgressBar();
-        updateButtons();
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top on section change
-    }
+    updateProgressBar();
+    updateButtons();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    function updateProgressBar() {
-        const progress = (currentSection / totalSections) * 100;
-        progressBar.style.width = `${progress}%`;
-        progressBar.setAttribute('aria-valuenow', progress);
-    }
+function updateProgressBar() {
+    const progress = (currentSection / totalSections) * 100;
+    progressBar.style.width = `${progress}%`;
+    progressBar.setAttribute('aria-valuenow', progress);
+}
 
-    function updateButtons() {
-        prevBtn.style.display = currentSection === 1 ? 'none' : 'block';
-        nextBtn.style.display = currentSection === totalSections ? 'none' : 'block';
-        submitBtn.style.display = currentSection === totalSections ? 'block' : 'none';
-    }
+function updateButtons() {
+    prevBtn.style.display = currentSection === 1 ? 'none' : 'block';
+    nextBtn.style.display = currentSection === totalSections ? 'none' : 'block';
+    submitBtn.style.display = currentSection === totalSections ? 'block' : 'none';
+}
 
-    function validateSection(sectionNumber) {
-        const currentSectionEl = document.getElementById(`section-${sectionNumber}`);
-        let isValid = true;
-        const inputs = currentSectionEl.querySelectorAll('input[required], select[required], textarea[required]');
-        const checkboxes = currentSectionEl.querySelectorAll('input[type="checkbox"][required]');
-        const radioGroups = {};
+function validateSection(sectionNumber) {
+    const currentSectionEl = document.getElementById(`section-${sectionNumber}`);
+    let isValid = true;
+    const inputs = currentSectionEl.querySelectorAll('input[required], select[required], textarea[required]');
+    const checkboxes = currentSectionEl.querySelectorAll('input[type="checkbox"][required]');
 
-        // Reset validation state for current section
-        currentSectionEl.querySelectorAll('.form-group').forEach(group => {
-            group.classList.remove('was-validated');
-        });
-        currentSectionEl.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(field => {
-            field.classList.remove('is-invalid');
-            const feedback = field.closest('.form-group')?.querySelector('.invalid-feedback');
+    // Reset validation state for current section
+    currentSectionEl.querySelectorAll('.form-group').forEach(group => {
+        group.classList.remove('was-validated');
+    });
+    currentSectionEl.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(field => {
+        field.classList.remove('is-invalid');
+        const feedback = field.closest('.form-group')?.querySelector('.invalid-feedback');
+        if (feedback) feedback.style.display = 'none';
+    });
+    
+    inputs.forEach(input => {
+        const formGroup = input.closest('.form-group');
+        formGroup?.classList.add('was-validated');
+        if (!input.checkValidity()) {
+            input.classList.add('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
+            if (feedback) feedback.style.display = 'block';
+            isValid = false;
+        } else {
+            input.classList.remove('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
             if (feedback) feedback.style.display = 'none';
-        });
-        
-        inputs.forEach(input => {
-            const formGroup = input.closest('.form-group');
-            formGroup?.classList.add('was-validated'); // Add was-validated to show feedback
-            if (!input.checkValidity()) {
-                input.classList.add('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'block';
-                isValid = false;
-            } else {
-                input.classList.remove('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'none';
-            }
-        });
+        }
+    });
 
-        checkboxes.forEach(checkbox => {
-            const formGroup = checkbox.closest('.form-group');
-            formGroup?.classList.add('was-validated');
-            if (!checkbox.checked) {
-                checkbox.classList.add('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'block';
-                isValid = false;
-            } else {
-                checkbox.classList.remove('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'none';
-            }
-        });
+    checkboxes.forEach(checkbox => {
+        const formGroup = checkbox.closest('.form-group');
+        formGroup?.classList.add('was-validated');
+        if (!checkbox.checked) {
+            checkbox.classList.add('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
+            if (feedback) feedback.style.display = 'block';
+            isValid = false;
+        } else {
+            checkbox.classList.remove('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
+            if (feedback) feedback.style.display = 'none';
+        }
+    });
 
-        // Handle radio button validation specifically for the payment section (section 7)
-        if (sectionNumber === 7) {
-            const paymentSelected = document.querySelector('input[name="metodo_pago"]:checked');
-            const paymentFeedbackEl = document.getElementById('metodo-pago-feedback');
-            if (!paymentSelected) {
-                paymentFeedbackEl.style.display = 'block';
-                isValid = false;
-            } else {
-                paymentFeedbackEl.style.display = 'none';
-                // Validate specific fields based on selected payment method
-                if (paymentSelected.value === 'transferencia') {
-                    if (!numeroTransferencia.value.trim()) {
-                        numeroTransferencia.classList.add('is-invalid');
-                        numeroTransferencia.closest('.form-group').classList.add('was-validated');
-                        numeroTransferencia.nextElementSibling.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        numeroTransferencia.classList.remove('is-invalid');
-                        numeroTransferencia.nextElementSibling.style.display = 'none';
-                    }
-                } else if (paymentSelected.value === 'qr') {
-                    if (!referenciaQr.value.trim()) {
-                        referenciaQr.classList.add('is-invalid');
-                        referenciaQr.closest('.form-group').classList.add('was-validated');
-                        referenciaQr.nextElementSibling.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        referenciaQr.classList.remove('is-invalid');
-                        referenciaQr.nextElementSibling.style.display = 'none';
-                    }
-                } else if (paymentSelected.value === 'paypal') {
-                    if (paypalCompletedInput.value !== 'true') {
-                        paypalFeedback.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        paypalFeedback.style.display = 'none';
-                    }
+    if (sectionNumber === 7) {
+        const paymentSelected = document.querySelector('input[name="metodo_pago"]:checked');
+        const paymentFeedbackEl = document.getElementById('metodo-pago-feedback');
+        if (!paymentSelected) {
+            paymentFeedbackEl.style.display = 'block';
+            isValid = false;
+        } else {
+            paymentFeedbackEl.style.display = 'none';
+            if (paymentSelected.value === 'transferencia') {
+                if (!numeroTransferencia.value.trim()) {
+                    numeroTransferencia.classList.add('is-invalid');
+                    numeroTransferencia.closest('.form-group').classList.add('was-validated');
+                    numeroTransferencia.nextElementSibling.style.display = 'block';
+                    isValid = false;
+                } else {
+                    numeroTransferencia.classList.remove('is-invalid');
+                    numeroTransferencia.nextElementSibling.style.display = 'none';
+                }
+            } else if (paymentSelected.value === 'qr') {
+                if (!referenciaQr.value.trim()) {
+                    referenciaQr.classList.add('is-invalid');
+                    referenciaQr.closest('.form-group').classList.add('was-validated');
+                    referenciaQr.nextElementSibling.style.display = 'block';
+                    isValid = false;
+                } else {
+                    referenciaQr.classList.remove('is-invalid');
+                    referenciaQr.nextElementSibling.style.display = 'none';
+                }
+            } else if (paymentSelected.value === 'paypal') {
+                if (paypalCompletedInput.value !== 'true') {
+                    paypalFeedback.style.display = 'block';
+                    isValid = false;
+                } else {
+                    paypalFeedback.style.display = 'none';
                 }
             }
         }
-
-        return isValid;
     }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentSection > 1) {
-            currentSection--;
+    return isValid;
+}
+
+prevBtn.addEventListener('click', () => {
+    if (currentSection > 1) {
+        currentSection--;
+        showSection(currentSection);
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (validateSection(currentSection)) {
+        if (currentSection < totalSections) {
+            currentSection++;
             showSection(currentSection);
         }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (validateSection(currentSection)) {
-            if (currentSection < totalSections) {
-                currentSection++;
-                showSection(currentSection);
-            }
-        } else {
-            // Scroll to the first invalid field
-            const firstInvalid = document.querySelector('.form-section.active .is-invalid');
-            if (firstInvalid) {
-                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+    } else {
+        const firstInvalid = document.querySelector('.form-section.active .is-invalid');
+        if (firstInvalid) {
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-    });
+    }
+});
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!validateSection(totalSections)) {
-            // Scroll to the first invalid field
-            const firstInvalid = document.querySelector('.form-section.active .is-invalid');
-            if (firstInvalid) {
-                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            return;
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validateSection(totalSections)) {
+        const firstInvalid = document.querySelector('.form-section.active .is-invalid');
+        if (firstInvalid) {
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+        return;
+    }
 
-        // Show loading spinner
-        loadingSpinner.style.display = 'block';
-        submitBtn.disabled = true;
-        prevBtn.disabled = true;
+    loadingSpinner.style.display = 'block';
+    submitBtn.disabled = true;
+    prevBtn.disabled = true;
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-        console.log("Datos del formulario a enviar:", data);
+    console.log("Datos del formulario a enviar:", data);
 
-        try {
-            // ¡AQUÍ ES DONDE USAS LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT!
-            const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbyZQ2_x2wZwSDBVrDCqMoJOFIDTFWqMeEtDDIdd8QCMtvW3HscWjTVJiKFunQc3Bejzag/exec';
+    try {
+        const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbwDyGz9leQ2Ih277-EtJ6cDJjBzZ-J5J1cdz8TZsX4_l1SjBs9ucTiCxTWFEYAnkK6KBQ/exec';
 
-            const response = await fetch(googleAppsScriptURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.status === 'success') {
-                // Ocultar formulario y mostrar confirmación
-                sections.forEach(section => section.style.display = 'none');
-                
-                // Las siguientes líneas las movemos al bloque finally
-                // prevBtn.style.display = 'none';
-                // nextBtn.style.display = 'none';
-                // submitBtn.style.display = 'none';
-                // loadingSpinner.style.display = 'none';
-
-                confirmationMessage.style.display = 'block';
-
-                form.reset();
-                paypalCompletedInput.value = 'false';
-
-            } else {
-                console.error('Error del script de Google Apps Script:', result.message || 'Error desconocido');
-                alert(`Hubo un error al enviar tu inscripción. Por favor, inténtalo de nuevo más tarde. Mensaje: ${result.message || 'Error desconocido'}`);
-            }
-        } catch (error) {
-            console.error('Error al enviar el formulario (fetch):', error);
-            alert('Hubo un problema de conexión al enviar tu inscripción. Por favor, verifica tu internet e inténtalo de nuevo más tarde.');
-        }   finally { // Este bloque DEBE estar aquí
-            loadingSpinner.style.display = 'none';
-            submitBtn.disabled = false;
-            prevBtn.disabled = false;
-        }
-    }); 
-
-    // Handle payment method display
-    paymentRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            transferenciaDetails.classList.remove('active');
-            qrDetails.classList.remove('active');
-            paypalContainer.classList.remove('active');
-
-            // Reset validation and values for payment fields
-            numeroTransferencia.value = '';
-            numeroTransferencia.classList.remove('is-invalid');
-            numeroTransferencia.closest('.form-group')?.classList.remove('was-validated');
-            numeroTransferencia.nextElementSibling.style.display = 'none';
-
-            referenciaQr.value = '';
-            referenciaQr.classList.remove('is-invalid');
-            referenciaQr.closest('.form-group')?.classList.remove('was-validated');
-            referenciaQr.nextElementSibling.style.display = 'none';
-
-            paypalCompletedInput.value = 'false';
-            paypalFeedback.style.display = 'none';
-
-
-            if (radio.value === 'transferencia') {
-                transferenciaDetails.classList.add('active');
-                numeroTransferencia.setAttribute('required', 'true');
-                referenciaQr.removeAttribute('required');
-            } else if (radio.value === 'qr') {
-                qrDetails.classList.add('active');
-                referenciaQr.setAttribute('required', 'true');
-                numeroTransferencia.removeAttribute('required');
-            } else if (radio.value === 'paypal') {
-                paypalContainer.classList.add('active');
-                numeroTransferencia.removeAttribute('required');
-                referenciaQr.removeAttribute('required');
-            }
+        const response = await fetch(googleAppsScriptURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(data).toString()
         });
-    });
 
-    // Handle transport type display
-    transporteSelect.addEventListener('change', () => {
-        if (transporteSelect.value === 'vuelo') {
-            detallesVuelo.classList.add('active');
-            numeroVuelo.setAttribute('required', 'true');
+        const result = await response.json();
+
+        if (response.ok && result.status === 'success') {
+            sections.forEach(section => section.style.display = 'none');
+            confirmationMessage.style.display = 'block';
+            form.reset();
+            paypalCompletedInput.value = 'false';
         } else {
-            detallesVuelo.classList.remove('active');
-            numeroVuelo.removeAttribute('required');
-            numeroVuelo.value = ''; // Clear value when not needed
-            numeroVuelo.classList.remove('is-invalid');
-            numeroVuelo.closest('.form-group')?.classList.remove('was-validated');
+            console.error('Error del script de Google Apps Script:', result.errors ? result.errors.join(', ') : result.message || 'Error desconocido');
+            alert(`Hubo un error al enviar tu inscripción: ${result.errors ? result.errors.join(', ') : result.message || 'Error desconocido'}`);
+        }
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        alert('Hubo un problema de conexión al enviar tu inscripción. Por favor, verifica tu internet e inténtalo de nuevo.');
+    } finally {
+        loadingSpinner.style.display = 'none';
+        submitBtn.disabled = false;
+        prevBtn.disabled = false;
+    }
+});
+
+paymentRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        transferenciaDetails.classList.remove('active');
+        qrDetails.classList.remove('active');
+        paypalContainer.classList.remove('active');
+
+        numeroTransferencia.value = '';
+        numeroTransferencia.classList.remove('is-invalid');
+        numeroTransferencia.closest('.form-group')?.classList.remove('was-validated');
+        numeroTransferencia.nextElementSibling.style.display = 'none';
+
+        referenciaQr.value = '';
+        referenciaQr.classList.remove('is-invalid');
+        referenciaQr.closest('.form-group')?.classList.remove('was-validated');
+        referenciaQr.nextElementSibling.style.display = 'none';
+
+        paypalCompletedInput.value = 'false';
+        paypalFeedback.style.display = 'none';
+
+        if (radio.value === 'transferencia') {
+            transferenciaDetails.classList.add('active');
+            numeroTransferencia.setAttribute('required', 'true');
+            referenciaQr.removeAttribute('required');
+        } else if (radio.value === 'qr') {
+            qrDetails.classList.add('active');
+            referenciaQr.setAttribute('required', 'true');
+            numeroTransferencia.removeAttribute('required');
+        } else if (radio.value === 'paypal') {
+            paypalContainer.classList.add('active');
+            numeroTransferencia.removeAttribute('required');
+            referenciaQr.removeAttribute('required');
         }
     });
+});
 
-    // Initialize PayPal button
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '70.00' // Fixed cost of $70 USD
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('Transacción completada por ' + details.payer.name.given_name);
-                paypalCompletedInput.value = 'true'; // Mark PayPal payment as complete
-                paypalFeedback.style.display = 'none'; // Hide validation feedback
-            });
-        },
-        onError: function(err) {
-            console.error('Error de PayPal:', err);
-            paypalCompletedInput.value = 'false'; // Mark PayPal payment as incomplete
-            alert('Hubo un error con el pago de PayPal. Por favor, inténtalo de nuevo.');
-        }
-    }).render('#paypal-button-container');
+transporteSelect.addEventListener('change', () => {
+    if (transporteSelect.value === 'vuelo') {
+        detallesVuelo.classList.add('active');
+        numeroVuelo.setAttribute('required', 'true');
+    } else {
+        detallesVuelo.classList.remove('active');
+        numeroVuelo.removeAttribute('required');
+        numeroVuelo.value = '';
+        numeroVuelo.classList.remove('is-invalid');
+        numeroVuelo.closest('.form-group')?.classList.remove('was-validated');
+    }
+});
 
-    // Initial setup
-    showSection(currentSection);
-</script>
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '70.00'
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            alert('Transacción completada por ' + details.payer.name.given_name);
+            paypalCompletedInput.value = 'true';
+            paypalFeedback.style.display = 'none';
+        });
+    },
+    onError: function(err) {
+        console.error('Error de PayPal:', err);
+        paypalCompletedInput.value = 'false';
+        alert('Hubo un error con el pago de PayPal. Por favor, inténtalo de nuevo.');
+    }
+}).render('#paypal-button-container');
+
+showSection(currentSection);
+    </script>
 </body>
 </html>
