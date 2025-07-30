@@ -84,8 +84,6 @@
     }
 }       
 
-
-
         .form-container {
             max-width: 900px;
             margin: 0 auto 50px;
@@ -200,14 +198,42 @@
         }
 
         .qr-container {
-            text-align: center;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            max-width: 250px;
-            margin: 0 auto;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    max-width: 250px;
+    margin: 0 auto;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.qr-banco {
+    display: flex;
+    justify-content: center; /* Centra la imagen */
+}
+
+.qr-banco .encae-logo {
+    max-width: 200px; /* Tamaño adecuado para escaneo, ajustado para el padding */
+    height: auto;
+    margin: 0; /* Anula márgenes de .encae-logo */
+    position: static; /* Anula position: absolute de .encae-logo */
+    bottom: auto; /* Anula bottom de .encae-logo */
+    left: auto; /* Anula left de .encae-logo */
+    z-index: auto; /* Anula z-index de .encae-logo */
+    border: 2px solid #111111; /* Borde para destacar el QR */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .qr-container {
+        max-width: 200px; /* Reduce el contenedor en móviles */
+        padding: 10px;
+    }
+
+    .qr-banco .encae-logo {
+        max-width: 160px; /* QR más pequeño para móviles */
+    }
+}
         
         .qr-placeholder {
             width: 150px;
@@ -704,7 +730,7 @@
                     <div id="detalles-qr" class="payment-method">
                         <h5 class="text-center">Pago por código QR</h5>
                         <div class="qr-container">
-                            <div class="container">
+                            <div class="qr-banco">
                                 <img src="img/10moencae/qrPichincha.jpg" alt="Logo ENCAE" class="encae-logo">
                             </div>
                         </div>
