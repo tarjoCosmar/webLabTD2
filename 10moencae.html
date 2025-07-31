@@ -386,11 +386,11 @@
         }
         
         /* Estilo para el botón de PayPal */
-        #paypal-container {
-            margin: 20px auto;
-            max-width: 250px;
-            text-align: center;
-        }
+    #paypal-container {
+        margin: 20px auto;
+        max-width: 250px;
+        text-align: center;
+    }
         
         @media (max-width: 768px) {
             .form-container {
@@ -742,11 +742,13 @@
                         </div>
                     </div>
 
-                    <div id="paypal-container" class="payment-method active">
-                        <div id="paypal-button-container"></div>
-                        <div class="invalid-feedback" id="paypal-feedback" style="display: none;">Por favor completa el pago con PayPal.</div>
-                        <input type="hidden" id="paypal-completed" name="paypal_completed" value="false">
-                    </div>
+                    <div id="paypal-container" class="payment-method">
+                        <h5 class="text-center">Pago con PayPal o tarjeta</h5>
+                        <div id="paypal-container-HER6X9MZAMEKE"></div>
+                            <div class="invalid-feedback" id="paypal-feedback" style="display: none;">Por favor completa el pago con PayPal o tarjeta.</div>
+                            <input type="hidden" id="paypal-completed" name="paypal_completed" value="false">
+                            <small class="form-text text-muted">Puedes pagar con tarjeta de crédito/débito sin necesidad de una cuenta PayPal.</small>
+                        </div>
                 </div>
 
                 <div class="confirmation-message" id="confirmation-message">
@@ -1078,31 +1080,22 @@ transporteSelect.addEventListener('change', () => {
     }
 });
 
-paypal.Buttons({
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: '70.00'
-                }
-            }]
-        });
-    },
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-            alert('Transacción completada por ' + details.payer.name.given_name);
-            paypalCompletedInput.value = 'true';
-            paypalFeedback.style.display = 'none';
-        });
+paypal.HostedButtons({
+    hostedButtonId: "HER6X9MZAMEKE",
+    onApprove: function(data) {
+        document.getElementById('paypal-completed').value = 'true';
+        document.getElementById('paypal-feedback').style.display = 'none';
+        alert('Pago con PayPal completado con éxito.');
     },
     onError: function(err) {
-        console.error('Error de PayPal:', err);
-        paypalCompletedInput.value = 'false';
+        document.getElementById('paypal-completed').value = 'false';
+        document.getElementById('paypal-feedback').style.display = 'block';
+        console.error('Error en PayPal:', err);
         alert('Hubo un error con el pago de PayPal. Por favor, inténtalo de nuevo.');
     }
-}).render('#paypal-button-container');
+}).render('#paypal-container-HER6X9MZAMEKE');
 
 showSection(currentSection);
-</script>
+    </script>
 </body>
 </html>
