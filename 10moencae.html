@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+        <link href="css/responsive.css" rel="stylesheet" type="text/css">
+        <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+
     
     <script src="https://www.paypal.com/sdk/js?client-id=BAA1T3wZTeHi5KhqFa6i9Y3ApgAaY_hStgrmXJbjmK5UfPuGhDK8i3CLWyZfu5AjxQ6GZ2iR736vUxQa1M&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
     
@@ -20,73 +28,62 @@
             --light-color: #f8f9fa;
             --dark-color: #2c3e50;
         }
-        
-        /* Estilos para la navegación */
-        .main-nav-outer {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .main-nav {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .main-nav li {
-            margin: 0 15px;
-        }
-        
-        .main-nav li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        
-        .main-nav li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .small-logo {
-            position: absolute;
-            left: 50%;
-            top: -15px;
-            transform: translateX(-50%);
-        }
-        
-        .small-logo img {
-            height: 60px;
-        }
-        
-        .encae-header {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1546111243-1e18006bd839?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: white;
-            padding: 100px 0 60px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .encae-header h1 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 15px;
-        }
-        
-        .encae-header .subtitle {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
+       /* Estilo para encae header */ 
+    .encae-header {
+    background: #05d8c5;
+    color: #2c3e50;
+    padding: 100px 0 80px;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative; /* Hace que .encae-header sea el contenedor de referencia para el logo */
+}
+
+.encae-logo {
+    position: absolute;
+    bottom: -80px; /* Distancia desde la parte inferior de .encae-header */
+    left: 10px; /* Distancia desde la izquierda de .encae-header */
+    max-width: 200px; /* Ajusta según el tamaño de tu logo */
+    height: auto; /* Mantiene la proporción */
+    z-index: 10; /* Asegura que el logo esté por encima de otros elementos */
+}
+
+.encae-header h1 {
+    font-family: 'Montserrat', sans-serif; /* Fuente moderna y bold */
+    color: #012e67;
+    font: size 40px; /* Tamaño grande para el título */
+    font-weight: 700; /* Peso bold */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    line-height: 1.2; /* Mejor legibilidad */
+}
+
+.encae-header .subtitle {
+    font-family: 'Open Sans', sans-serif; /* Fuente clara y legible */
+    font-size: 18px; /* Tamaño más pequeño para subtítulos */
+    font-weight: 400; /* Peso regular */
+    margin-bottom: 10px; /* Espacio entre subtítulos */
+    line-height: 1.4; /* Mejor legibilidad */
+}
+
+.container {
+    max-width: 1200px; /* Ajusta según tu diseño */
+    margin: 0 auto;
+    padding: 0 15px; /* Asegura un padding consistente */
+    position: relative; /* Permite que el logo se posicione dentro de .container si prefieres */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .encae-header {
+        padding: 80px 0 60px; /* Reduce el padding en móviles */
+    }
+
+    .encae-logo {
+        max-width: 120px; /* Tamaño más pequeño para móviles */
+        bottom: -60px;
+        left: 5px;
+    }
+}       
+
         .form-container {
             max-width: 900px;
             margin: 0 auto 50px;
@@ -201,14 +198,42 @@
         }
 
         .qr-container {
-            text-align: center;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            max-width: 250px;
-            margin: 0 auto;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    max-width: 250px;
+    margin: 0 auto;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.qr-banco {
+    display: flex;
+    justify-content: center; /* Centra la imagen */
+}
+
+.qr-banco .encae-logo {
+    max-width: 200px; /* Tamaño adecuado para escaneo, ajustado para el padding */
+    height: auto;
+    margin: 0; /* Anula márgenes de .encae-logo */
+    position: static; /* Anula position: absolute de .encae-logo */
+    bottom: auto; /* Anula bottom de .encae-logo */
+    left: auto; /* Anula left de .encae-logo */
+    z-index: auto; /* Anula z-index de .encae-logo */
+    border: 2px solid #111111; /* Borde para destacar el QR */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .qr-container {
+        max-width: 200px; /* Reduce el contenedor en móviles */
+        padding: 10px;
+    }
+
+    .qr-banco .encae-logo {
+        max-width: 160px; /* QR más pequeño para móviles */
+    }
+}
         
         .qr-placeholder {
             width: 150px;
@@ -360,80 +385,12 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Estilos para el footer */
-        .footer {
-            background: #111;
-            color: #aaa;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        .container-social {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .social-link {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px;
-        }
-        
-        .social-link li {
-            margin: 0 10px;
-        }
-        
-        .social-link li a {
-            display: block;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #333;
-            color: #fff;
-            line-height: 40px;
-            font-size: 18px;
-            text-align: center; /* Center the icon */
-            transition: all 0.3s;
-        }
-        
-        .social-link li.instagram a:hover { background: #e4405f; }
-        .social-link li.facebook a:hover { background: #3b5999; }
-        .social-link li.gplus a:hover { background: #cd201f; }
-        .social-link li.tiktok a:hover { background: #000; }
-        .social-link li.twitter a:hover { background: #1da1f2; }
-        
-        .twitter-icon {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-        }
-        
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            max-height: 60px;
-        }
-        
-        .copyright {
-            font-size: 14px;
-        }
-        
-        .copyright a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-        
         /* Estilo para el botón de PayPal */
-        #paypal-container {
-            margin: 20px auto;
-            max-width: 250px;
-            text-align: center;
-        }
+    #paypal-container {
+        margin: 20px auto;
+        max-width: 250px;
+        text-align: center;
+    }
         
         @media (max-width: 768px) {
             .form-container {
@@ -483,27 +440,33 @@
     </style>
 </head>
 <body>
-    <nav class="main-nav-outer" id="test">
-        <div class="container">
-            <ul class="main-nav">
-                <li><a href="index.html#test">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="Proyecto_actual.html">Proyecto Actual</a></li>
-                <li class="small-logo">
-                    <a href="#Portfolio">
-                        <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
-                    </a>
-                </li>
-                <li><a href="tienda.html">Tienda</a></li>
-                <li><a href="#Portfolio">Obras</a></li>
-                <li><a href="contacto.html">Contactos</a></li>
-            </ul>
-        </div>          
-    </nav>
-
+    <nav class="main-nav-outer" id="test"><!--main-nav-start-->
+                <div class="container">
+                    <ul class="main-nav">
+                        <li><a href="index.html#test">Inicio</a></li>
+                        <li><a href="nosotros.html">Nosotros</a></li>
+                        <li><a href="Proyecto_actual.html">Proyecto Actual</a></li>
+                        <li class="small-logo">
+                            <a href="#service">
+                                <img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"> 
+                            </a>
+                        </li>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="obras.html">Obras</a></li>
+                        <li><a href="contacto.html">Contactos</a></li>
+                        <li><a href="#10moencae">10moENCAE</a></li>
+                    </ul>
+                    <ul class="main-nav_mobile">
+                        <li><a class="logo_mobile" href="#"><img src="img/logo_nav1.png" alt="Logo Laboratorio Teatral D2"></a></li>
+                        <li><a class="res-nav_click" href="#"><i class="fa-bars"></i></a></li>
+                    </ul>              
+                </div>       
+    </nav><!--main-nav-end-->
+    
     <div class="encae-header">
         <div class="container">
-            <h1>10mo Encuentro de Creación en Artes Escénicas ENCAE Florecer</h1>
+            <img src="img/10moencae/flor.png" alt="Logo ENCAE" class="encae-logo">
+            <h1>10mo ENcuentro de Creación en Artes Escénicas ENCAE Florecer</h1>
             <p class="subtitle">Macas, Ecuador • 22 al 24 de agosto de 2025</p>
             <p class="subtitle">Convivencia artística con talleres, charlas, actividades comunitarias y producción teatral</p>
         </div>
@@ -753,9 +716,9 @@
                     <div id="detalles-transferencia" class="payment-method">
                         <h5>Datos para transferencia bancaria</h5>
                         <p><strong>Banco:</strong> Banco del Pichincha</p>
-                        <p><strong>N° de Cuenta:</strong> 2100123456789012</p>
+                        <p><strong>N° de Cuenta:</strong> 2202622110</p>
                         <p><strong>Tipo:</strong> Cuenta Corriente</p>
-                        <p><strong>A nombre de:</strong> Laboratorio Teatral D2</p>
+                        <p><strong>A nombre de:</strong> Elizabeth Alejandra Pazmiño Freire</p>
                         <div class="form-group mt-3">
                             <label class="form-label required" for="numero-transferencia">Número de referencia de transferencia</label>
                             <input type="text" class="form-control" id="numero-transferencia" name="numero_transferencia" placeholder="Ej: TRF-2025-12345">
@@ -763,13 +726,13 @@
                             <small class="form-text text-muted">Ingresa el código de referencia que te proporcionó tu banco</small>
                         </div>
                     </div>
+
                     <div id="detalles-qr" class="payment-method">
                         <h5 class="text-center">Pago por código QR</h5>
                         <div class="qr-container">
-                            <div class="qr-placeholder">
-                                <span>Código QR para pagos<br>(Se generará en producción)</span>
+                            <div class="qr-banco">
+                                <img src="img/10moencae/qrPichincha.jpg" alt="Logo ENCAE" class="encae-logo">
                             </div>
-                            <p>Escanea este código con la aplicación de tu banco</p>
                         </div>
                         <div class="form-group mt-3">
                             <label class="form-label required" for="referencia-qr">Referencia de pago QR</label>
@@ -778,11 +741,14 @@
                             <small class="form-text text-muted">Ingresa cualquier referencia o confirmación que te dé la app de tu banco</small>
                         </div>
                     </div>
-                    <div id="paypal-container" class="payment-method active">
-                        <div id="paypal-button-container"></div>
-                        <div class="invalid-feedback" id="paypal-feedback" style="display: none;">Por favor completa el pago con PayPal.</div>
-                        <input type="hidden" id="paypal-completed" name="paypal_completed" value="false">
-                    </div>
+
+                    <div id="paypal-container" class="payment-method">
+                        <h5 class="text-center">Pago con PayPal o tarjeta</h5>
+                        <div id="paypal-container-HER6X9MZAMEKE"></div>
+                            <div class="invalid-feedback" id="paypal-feedback" style="display: none;">Por favor completa el pago con PayPal o tarjeta.</div>
+                            <input type="hidden" id="paypal-completed" name="paypal_completed" value="false">
+                            <small class="form-text text-muted">Puedes pagar con tarjeta de crédito/débito sin necesidad de una cuenta PayPal.</small>
+                        </div>
                 </div>
 
                 <div class="confirmation-message" id="confirmation-message">
@@ -805,341 +771,332 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="container-social">
-            <div class="footer-logo">
-                <a href="#hero"><img src="img/small-logo.png" alt="Logo del Laboratorio teatral D2"></a>
-            </div>
-            <ul class="social-link">
-                <li class="instagram"><a href="https://www.instagram.com/laboratoriod2" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                <li class="facebook"><a href="https://www.facebook.com/laboratoriod2" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                <li class="gplus"><a href="https://www.youtube.com/@LaboratorioTeatralD2" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                <li class="tiktok"><a href="https://www.tiktok.com/@laboratoriod2" target="_blank"><i class="fab fa-tiktok"></i></a></li>
-                <li class="twitter"><a href="#"><img src="img/x-twitter.svg" class="twitter-icon" alt="X Twitter icon"></a></li>
-            </ul>
-            <div class="copyright">
-                &copy; 2025 Laboratorio Teatral D2. Todos los derechos reservados. | Diseño por <a href="https://www.linkedin.com/in/steeven-palacios-b7b55b206/" target="_blank">Steeven Palacios</a>
-            </div>
-        </div>
-    </footer>
+    <footer class="footer"><!--copyright-©-->
+                <div class="container-social">
+                    <ul class="social-link">
+                        <li class="instagram"><a href="https://www.instagram.com/marcos_chamorro_mera/" target="_blank"><i class="fa-instagram"></i></a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/pages/D2/665190513612321?ref=hl" target="_blank"><i class="fa-facebook"></i></a></li>
+                        <li class="gplus"><a href="https://www.youtube.com/@MrMarcosChamorro" target="_blank"><i class="fa-youtube"></i></a></li>
+                        <li class="tiktok"><a href="https://www.tiktok.com/@labtd2" target="_blank"><i class="fa-tiktok"></i></a></li>
+                        <li class="twitter">
+                            <a href="https://x.com/MarcosChamorroM" target="_blank"><img src="img/new-twitter-logo.svg" class="twitter-icon" alt="Twitter"></a>
+                        </li>
+                    </ul>
+                    
+                    <div class="footer-logo"><a href="#"><img src="img/footer-logo.png" alt=""></a></div>
+                    <span class="copyright">Diseñado por Mk-sistem <a href="#">Tecnología.</a> 2025</span>
+                </div>
+    </footer><!--copyrigth-end-->
 
     <script>
     let currentSection = 1;
-    const totalSections = 7;
-    const form = document.getElementById('encae-form');
-    const sections = document.querySelectorAll('.form-section');
-    const progressBar = document.querySelector('.progress-bar');
-    const stepIndicators = document.querySelectorAll('.step');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const submitBtn = document.getElementById('submit-btn');
-    const loadingSpinner = document.getElementById('loading-spinner');
-    const confirmationMessage = document.getElementById('confirmation-message');
+const totalSections = 7;
+const form = document.getElementById('encae-form');
+const sections = document.querySelectorAll('.form-section');
+const progressBar = document.querySelector('.progress-bar');
+const stepIndicators = document.querySelectorAll('.step');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const submitBtn = document.getElementById('submit-btn');
+const loadingSpinner = document.getElementById('loading-spinner');
+const confirmationMessage = document.getElementById('confirmation-message');
 
-    // Payment method specific elements
-    const paymentRadios = document.querySelectorAll('input[name="metodo_pago"]');
-    const transferenciaDetails = document.getElementById('detalles-transferencia');
-    const qrDetails = document.getElementById('detalles-qr');
-    const paypalContainer = document.getElementById('paypal-container');
-    const paypalButtonContainer = document.getElementById('paypal-button-container');
-    const paypalCompletedInput = document.getElementById('paypal-completed');
-    const paypalFeedback = document.getElementById('paypal-feedback');
-    const numeroTransferencia = document.getElementById('numero-transferencia');
-    const referenciaQr = document.getElementById('referencia-qr');
+// Payment method specific elements
+const paymentRadios = document.querySelectorAll('input[name="metodo_pago"]');
+const transferenciaDetails = document.getElementById('detalles-transferencia');
+const qrDetails = document.getElementById('detalles-qr');
+const paypalContainer = document.getElementById('paypal-container');
+const paypalButtonContainer = document.getElementById('paypal-button-container');
+const paypalCompletedInput = document.getElementById('paypal-completed');
+const paypalFeedback = document.getElementById('paypal-feedback');
+const numeroTransferencia = document.getElementById('numero-transferencia');
+const referenciaQr = document.getElementById('referencia-qr');
 
-    // Transportation details
-    const transporteSelect = document.getElementById('transporte');
-    const detallesVuelo = document.getElementById('detalles-vuelo');
-    const numeroVuelo = document.getElementById('numero-vuelo');
+// Transportation details
+const transporteSelect = document.getElementById('transporte');
+const detallesVuelo = document.getElementById('detalles-vuelo');
+const numeroVuelo = document.getElementById('numero-vuelo');
 
-    function showSection(sectionNumber) {
-        sections.forEach((section, index) => {
-            section.classList.remove('active');
-            if (index + 1 === sectionNumber) {
-                section.classList.add('active');
-            }
-        });
+function showSection(sectionNumber) {
+    sections.forEach((section, index) => {
+        section.classList.remove('active');
+        if (index + 1 === sectionNumber) {
+            section.classList.add('active');
+        }
+    });
 
-        stepIndicators.forEach((step, index) => {
-            step.classList.remove('active');
-            if (index + 1 === sectionNumber) {
-                step.classList.add('active');
-            }
-        });
+    stepIndicators.forEach((step, index) => {
+        step.classList.remove('active');
+        if (index + 1 === sectionNumber) {
+            step.classList.add('active');
+        }
+    });
 
-        updateProgressBar();
-        updateButtons();
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top on section change
-    }
+    updateProgressBar();
+    updateButtons();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    function updateProgressBar() {
-        const progress = (currentSection / totalSections) * 100;
-        progressBar.style.width = `${progress}%`;
-        progressBar.setAttribute('aria-valuenow', progress);
-    }
+function updateProgressBar() {
+    const progress = (currentSection / totalSections) * 100;
+    progressBar.style.width = `${progress}%`;
+    progressBar.setAttribute('aria-valuenow', progress);
+}
 
-    function updateButtons() {
-        prevBtn.style.display = currentSection === 1 ? 'none' : 'block';
-        nextBtn.style.display = currentSection === totalSections ? 'none' : 'block';
-        submitBtn.style.display = currentSection === totalSections ? 'block' : 'none';
-    }
+function updateButtons() {
+    prevBtn.style.display = currentSection === 1 ? 'none' : 'block';
+    nextBtn.style.display = currentSection === totalSections ? 'none' : 'block';
+    submitBtn.style.display = currentSection === totalSections ? 'block' : 'none';
+}
 
-    function validateSection(sectionNumber) {
-        const currentSectionEl = document.getElementById(`section-${sectionNumber}`);
-        let isValid = true;
-        const inputs = currentSectionEl.querySelectorAll('input[required], select[required], textarea[required]');
-        const checkboxes = currentSectionEl.querySelectorAll('input[type="checkbox"][required]');
-        const radioGroups = {};
+function validateSection(sectionNumber) {
+    const currentSectionEl = document.getElementById(`section-${sectionNumber}`);
+    let isValid = true;
+    const inputs = currentSectionEl.querySelectorAll('input[required], select[required], textarea[required]');
+    const checkboxes = currentSectionEl.querySelectorAll('input[type="checkbox"][required]');
 
-        // Reset validation state for current section
-        currentSectionEl.querySelectorAll('.form-group').forEach(group => {
-            group.classList.remove('was-validated');
-        });
-        currentSectionEl.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(field => {
-            field.classList.remove('is-invalid');
-            const feedback = field.closest('.form-group')?.querySelector('.invalid-feedback');
+    // Reset validation state for current section
+    currentSectionEl.querySelectorAll('.form-group').forEach(group => {
+        group.classList.remove('was-validated');
+    });
+    currentSectionEl.querySelectorAll('.form-control, .form-select, .form-check-input').forEach(field => {
+        field.classList.remove('is-invalid');
+        const feedback = field.closest('.form-group')?.querySelector('.invalid-feedback');
+        if (feedback) feedback.style.display = 'none';
+    });
+
+    // Validate inputs
+    inputs.forEach(input => {
+        const formGroup = input.closest('.form-group');
+        formGroup?.classList.add('was-validated');
+        if (!input.checkValidity()) {
+            input.classList.add('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
+            if (feedback) feedback.style.display = 'block';
+            isValid = false;
+        } else {
+            input.classList.remove('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
             if (feedback) feedback.style.display = 'none';
-        });
-        
-        inputs.forEach(input => {
-            const formGroup = input.closest('.form-group');
-            formGroup?.classList.add('was-validated'); // Add was-validated to show feedback
-            if (!input.checkValidity()) {
-                input.classList.add('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'block';
-                isValid = false;
-            } else {
-                input.classList.remove('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'none';
-            }
-        });
+        }
+    });
 
-        checkboxes.forEach(checkbox => {
-            const formGroup = checkbox.closest('.form-group');
-            formGroup?.classList.add('was-validated');
-            if (!checkbox.checked) {
-                checkbox.classList.add('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'block';
-                isValid = false;
-            } else {
-                checkbox.classList.remove('is-invalid');
-                const feedback = formGroup?.querySelector('.invalid-feedback');
-                if (feedback) feedback.style.display = 'none';
-            }
-        });
+    // Validate checkboxes
+    checkboxes.forEach(checkbox => {
+        const formGroup = checkbox.closest('.form-group');
+        formGroup?.classList.add('was-validated');
+        if (!checkbox.checked) {
+            checkbox.classList.add('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
+            if (feedback) feedback.style.display = 'block';
+            isValid = false;
+        } else {
+            checkbox.classList.remove('is-invalid');
+            const feedback = formGroup?.querySelector('.invalid-feedback');
+            if (feedback) feedback.style.display = 'none';
+        }
+    });
 
-        // Handle radio button validation specifically for the payment section (section 7)
-        if (sectionNumber === 7) {
-            const paymentSelected = document.querySelector('input[name="metodo_pago"]:checked');
-            const paymentFeedbackEl = document.getElementById('metodo-pago-feedback');
-            if (!paymentSelected) {
-                paymentFeedbackEl.style.display = 'block';
-                isValid = false;
-            } else {
-                paymentFeedbackEl.style.display = 'none';
-                // Validate specific fields based on selected payment method
-                if (paymentSelected.value === 'transferencia') {
-                    if (!numeroTransferencia.value.trim()) {
-                        numeroTransferencia.classList.add('is-invalid');
-                        numeroTransferencia.closest('.form-group').classList.add('was-validated');
-                        numeroTransferencia.nextElementSibling.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        numeroTransferencia.classList.remove('is-invalid');
-                        numeroTransferencia.nextElementSibling.style.display = 'none';
-                    }
-                } else if (paymentSelected.value === 'qr') {
-                    if (!referenciaQr.value.trim()) {
-                        referenciaQr.classList.add('is-invalid');
-                        referenciaQr.closest('.form-group').classList.add('was-validated');
-                        referenciaQr.nextElementSibling.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        referenciaQr.classList.remove('is-invalid');
-                        referenciaQr.nextElementSibling.style.display = 'none';
-                    }
-                } else if (paymentSelected.value === 'paypal') {
-                    if (paypalCompletedInput.value !== 'true') {
-                        paypalFeedback.style.display = 'block';
-                        isValid = false;
-                    } else {
-                        paypalFeedback.style.display = 'none';
-                    }
+    // Validate payment section
+    if (sectionNumber === 7) {
+        const paymentSelected = document.querySelector('input[name="metodo_pago"]:checked');
+        const paymentFeedbackEl = document.getElementById('metodo-pago-feedback');
+        if (!paymentSelected) {
+            paymentFeedbackEl.style.display = 'block';
+            isValid = false;
+        } else {
+            paymentFeedbackEl.style.display = 'none';
+            if (paymentSelected.value === 'transferencia') {
+                if (!numeroTransferencia.value.trim()) {
+                    numeroTransferencia.classList.add('is-invalid');
+                    numeroTransferencia.closest('.form-group').classList.add('was-validated');
+                    numeroTransferencia.nextElementSibling.style.display = 'block';
+                    isValid = false;
+                } else {
+                    numeroTransferencia.classList.remove('is-invalid');
+                    numeroTransferencia.nextElementSibling.style.display = 'none';
+                }
+            } else if (paymentSelected.value === 'qr') {
+                if (!referenciaQr.value.trim()) {
+                    referenciaQr.classList.add('is-invalid');
+                    referenciaQr.closest('.form-group').classList.add('was-validated');
+                    referenciaQr.nextElementSibling.style.display = 'block';
+                    isValid = false;
+                } else {
+                    referenciaQr.classList.remove('is-invalid');
+                    referenciaQr.nextElementSibling.style.display = 'none';
+                }
+            } else if (paymentSelected.value === 'paypal') {
+                if (paypalCompletedInput.value !== 'true') {
+                    paypalFeedback.style.display = 'block';
+                    isValid = false;
+                } else {
+                    paypalFeedback.style.display = 'none';
                 }
             }
         }
-
-        return isValid;
     }
 
-    prevBtn.addEventListener('click', () => {
-        if (currentSection > 1) {
-            currentSection--;
+    return isValid;
+}
+
+prevBtn.addEventListener('click', () => {
+    if (currentSection > 1) {
+        currentSection--;
+        showSection(currentSection);
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (validateSection(currentSection)) {
+        if (currentSection < totalSections) {
+            currentSection++;
             showSection(currentSection);
         }
-    });
-
-    nextBtn.addEventListener('click', () => {
-        if (validateSection(currentSection)) {
-            if (currentSection < totalSections) {
-                currentSection++;
-                showSection(currentSection);
-            }
-        } else {
-            // Scroll to the first invalid field
-            const firstInvalid = document.querySelector('.form-section.active .is-invalid');
-            if (firstInvalid) {
-                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+    } else {
+        const firstInvalid = document.querySelector('.form-section.active .is-invalid');
+        if (firstInvalid) {
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-    });
+    }
+});
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!validateSection(totalSections)) {
-            // Scroll to the first invalid field
-            const firstInvalid = document.querySelector('.form-section.active .is-invalid');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Validate all sections to ensure no required fields are missed
+    for (let i = 1; i <= totalSections; i++) {
+        if (!validateSection(i)) {
+            const firstInvalid = document.querySelector(`#section-${i} .is-invalid`);
             if (firstInvalid) {
+                currentSection = i;
+                showSection(i);
                 firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            console.log(`Validación falló en la sección ${i}`);
             return;
         }
+    }
 
-        // Show loading spinner
-        loadingSpinner.style.display = 'block';
-        submitBtn.disabled = true;
-        prevBtn.disabled = true;
+    loadingSpinner.style.display = 'block';
+    submitBtn.disabled = true;
+    prevBtn.disabled = true;
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
 
-        console.log("Datos del formulario a enviar:", data);
+    // Convert checkbox values to 'true' or 'false'
+    data.declaracion_edad = document.getElementById('declaracion-edad').checked ? 'true' : 'false';
+    data.declaracion_salud = document.getElementById('declaracion-salud').checked ? 'true' : 'false';
+    data.autorizacion_imagen = document.getElementById('autorizacion-imagen').checked ? 'true' : 'false';
+    data.acepto_reglamento = document.getElementById('acepto-reglamento').checked ? 'true' : 'false';
 
-        try {
-            // ¡AQUÍ ES DONDE USAS LA URL DE TU APLICACIÓN WEB DE GOOGLE APPS SCRIPT!
-            const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbyZQ2_x2wZwSDBVrDCqMoJOFIDTFWqMeEtDDIdd8QCMtvW3HscWjTVJiKFunQc3Bejzag/exec';
+    // Depuración: Verificar valores de las casillas
+    console.log("Valores de las casillas:", {
+        declaracion_edad: data.declaracion_edad,
+        declaracion_salud: data.declaracion_salud,
+        autorizacion_imagen: data.autorizacion_imagen,
+        acepto_reglamento: data.acepto_reglamento
+    });
+    console.log("Datos del formulario a enviar:", data);
 
-            const response = await fetch(googleAppsScriptURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+    try {
+        // === ¡URL ACTUALIZADA AQUÍ! ===
+        const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycbxzjTVMCNkSGhUmNPb7LoZFz_8bC3vQaTtISHzP2FW8ly4xgKvR2-kToQWZzlwxyBBSXA/exec';
 
-            const result = await response.json();
-
-            if (response.ok && result.status === 'success') {
-                // Ocultar formulario y mostrar confirmación
-                sections.forEach(section => section.style.display = 'none');
-                
-                // Las siguientes líneas las movemos al bloque finally
-                // prevBtn.style.display = 'none';
-                // nextBtn.style.display = 'none';
-                // submitBtn.style.display = 'none';
-                // loadingSpinner.style.display = 'none';
-
-                confirmationMessage.style.display = 'block';
-
-                form.reset();
-                paypalCompletedInput.value = 'false';
-
-            } else {
-                console.error('Error del script de Google Apps Script:', result.message || 'Error desconocido');
-                alert(`Hubo un error al enviar tu inscripción. Por favor, inténtalo de nuevo más tarde. Mensaje: ${result.message || 'Error desconocido'}`);
-            }
-        } catch (error) {
-            console.error('Error al enviar el formulario (fetch):', error);
-            alert('Hubo un problema de conexión al enviar tu inscripción. Por favor, verifica tu internet e inténtalo de nuevo más tarde.');
-        }   finally { // Este bloque DEBE estar aquí
-            loadingSpinner.style.display = 'none';
-            submitBtn.disabled = false;
-            prevBtn.disabled = false;
-        }
-    }); 
-
-    // Handle payment method display
-    paymentRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            transferenciaDetails.classList.remove('active');
-            qrDetails.classList.remove('active');
-            paypalContainer.classList.remove('active');
-
-            // Reset validation and values for payment fields
-            numeroTransferencia.value = '';
-            numeroTransferencia.classList.remove('is-invalid');
-            numeroTransferencia.closest('.form-group')?.classList.remove('was-validated');
-            numeroTransferencia.nextElementSibling.style.display = 'none';
-
-            referenciaQr.value = '';
-            referenciaQr.classList.remove('is-invalid');
-            referenciaQr.closest('.form-group')?.classList.remove('was-validated');
-            referenciaQr.nextElementSibling.style.display = 'none';
-
-            paypalCompletedInput.value = 'false';
-            paypalFeedback.style.display = 'none';
-
-
-            if (radio.value === 'transferencia') {
-                transferenciaDetails.classList.add('active');
-                numeroTransferencia.setAttribute('required', 'true');
-                referenciaQr.removeAttribute('required');
-            } else if (radio.value === 'qr') {
-                qrDetails.classList.add('active');
-                referenciaQr.setAttribute('required', 'true');
-                numeroTransferencia.removeAttribute('required');
-            } else if (radio.value === 'paypal') {
-                paypalContainer.classList.add('active');
-                numeroTransferencia.removeAttribute('required');
-                referenciaQr.removeAttribute('required');
-            }
+        const response = await fetch(googleAppsScriptURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(data).toString()
         });
-    });
 
-    // Handle transport type display
-    transporteSelect.addEventListener('change', () => {
-        if (transporteSelect.value === 'vuelo') {
-            detallesVuelo.classList.add('active');
-            numeroVuelo.setAttribute('required', 'true');
+        const result = await response.json();
+
+        if (response.ok && result.status === 'success') {
+            sections.forEach(section => section.style.display = 'none');
+            confirmationMessage.style.display = 'block';
+            form.reset();
+            paypalCompletedInput.value = 'false';
         } else {
-            detallesVuelo.classList.remove('active');
-            numeroVuelo.removeAttribute('required');
-            numeroVuelo.value = ''; // Clear value when not needed
-            numeroVuelo.classList.remove('is-invalid');
-            numeroVuelo.closest('.form-group')?.classList.remove('was-validated');
+            console.error('Error del script de Google Apps Script:', result.errors ? result.errors.join(', ') : result.message || 'Error desconocido');
+            alert(`Hubo un error al enviar tu inscripción: ${result.errors ? result.errors.join(', ') : result.message || 'Error desconocido'}`);
+        }
+    } catch (error) {
+        console.error('Error al enviar el formulario:', error);
+        alert('Hubo un problema de conexión al enviar tu inscripción. Por favor, verifica tu internet e inténtalo de nuevo.');
+    } finally {
+        loadingSpinner.style.display = 'none';
+        submitBtn.disabled = false;
+        prevBtn.disabled = false;
+    }
+});
+
+paymentRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        transferenciaDetails.classList.remove('active');
+        qrDetails.classList.remove('active');
+        paypalContainer.classList.remove('active');
+
+        numeroTransferencia.value = '';
+        numeroTransferencia.classList.remove('is-invalid');
+        numeroTransferencia.closest('.form-group')?.classList.remove('was-validated');
+        numeroTransferencia.nextElementSibling.style.display = 'none';
+
+        referenciaQr.value = '';
+        referenciaQr.classList.remove('is-invalid');
+        referenciaQr.closest('.form-group')?.classList.remove('was-validated');
+        referenciaQr.nextElementSibling.style.display = 'none';
+
+        paypalCompletedInput.value = 'false';
+        paypalFeedback.style.display = 'none';
+
+        if (radio.value === 'transferencia') {
+            transferenciaDetails.classList.add('active');
+            numeroTransferencia.setAttribute('required', 'true');
+            referenciaQr.removeAttribute('required');
+        } else if (radio.value === 'qr') {
+            qrDetails.classList.add('active');
+            referenciaQr.setAttribute('required', 'true');
+            numeroTransferencia.removeAttribute('required');
+        } else if (radio.value === 'paypal') {
+            paypalContainer.classList.add('active');
+            numeroTransferencia.removeAttribute('required');
+            referenciaQr.removeAttribute('required');
         }
     });
+});
 
-    // Initialize PayPal button
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '70.00' // Fixed cost of $70 USD
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('Transacción completada por ' + details.payer.name.given_name);
-                paypalCompletedInput.value = 'true'; // Mark PayPal payment as complete
-                paypalFeedback.style.display = 'none'; // Hide validation feedback
-            });
-        },
-        onError: function(err) {
-            console.error('Error de PayPal:', err);
-            paypalCompletedInput.value = 'false'; // Mark PayPal payment as incomplete
-            alert('Hubo un error con el pago de PayPal. Por favor, inténtalo de nuevo.');
-        }
-    }).render('#paypal-button-container');
+transporteSelect.addEventListener('change', () => {
+    if (transporteSelect.value === 'vuelo') {
+        detallesVuelo.classList.add('active');
+        numeroVuelo.setAttribute('required', 'true');
+    } else {
+        detallesVuelo.classList.remove('active');
+        numeroVuelo.removeAttribute('required');
+        numeroVuelo.value = '';
+        numeroVuelo.classList.remove('is-invalid');
+        numeroVuelo.closest('.form-group')?.classList.remove('was-validated');
+    }
+});
 
-    // Initial setup
-    showSection(currentSection);
-</script>
+paypal.HostedButtons({
+    hostedButtonId: "HER6X9MZAMEKE",
+    onApprove: function(data) {
+        document.getElementById('paypal-completed').value = 'true';
+        document.getElementById('paypal-feedback').style.display = 'none';
+        alert('Pago con PayPal completado con éxito.');
+    },
+    onError: function(err) {
+        document.getElementById('paypal-completed').value = 'false';
+        document.getElementById('paypal-feedback').style.display = 'block';
+        console.error('Error en PayPal:', err);
+        alert('Hubo un error con el pago de PayPal. Por favor, inténtalo de nuevo.');
+    }
+}).render('#paypal-container-HER6X9MZAMEKE');
+
+showSection(currentSection);
+    </script>
 </body>
 </html>
