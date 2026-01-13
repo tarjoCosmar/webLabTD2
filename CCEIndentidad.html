@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morona Santiago • Identidad y Pertenencia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde-selva: #1d5c54;
+      --verde-claro: #a1ca3d;
+      --terracota: #c8511f;
+      --naranja-ancestral: #e67e22;
+      --negro-profundo: #0f1c1a;
+      --crema: #f8f5e9;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom, #0f1c1a 0%, #1d5c54 100%);
+      color: var(--crema);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flyer-container {
+      background: rgba(29, 92, 84, 0.92);
+      backdrop-filter: blur(8px);
+      max-width: 720px;
+      margin: 2rem;
+      padding: 3rem 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      text-align: center;
+      border: 1px solid rgba(161,202,61,0.25);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      margin: 0.4rem 0;
+      color: var(--naranja-ancestral);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .subtitulo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      margin: 0.6rem 0 1.8rem;
+      letter-spacing: 1.5px;
+    }
+
+    .mano-img {
+      max-width: 85%;
+      border-radius: 12px;
+      margin: 1.5rem auto 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      border: 2px solid rgba(230,126,34,0.4);
+    }
+
+    .introduccion {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin: 1.5rem 0 2.5rem;
+      color: #e0e0e0;
+    }
+
+    .highlight {
+      color: var(--verde-claro);
+      font-weight: 600;
+    }
+
+    .boton-descarga {
+      display: inline-block;
+      background: var(--naranja-ancestral);
+      color: white;
+      padding: 1rem 2.8rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 50px;
+      margin: 1.5rem 0 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(230,126,34,0.4);
+    }
+
+    .boton-descarga:hover {
+      background: #d35400;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(230,126,34,0.6);
+    }
+
+    .info {
+      font-size: 1rem;
+      color: #c0c0c0;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #a0c0b8;
+      opacity: 0.9;
+    }
+
+    .logo-ccce {
+      max-width: 180px;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.6rem; }
+      .subtitulo { font-size: 1.5rem; }
+      .flyer-container { padding: 2.5rem 1.5rem; margin: 1rem; }
+    }
+    .logo-wrapper {
+  background: rgba(233, 231, 231, 0.986);       /* Blanco muy suave y semitransparente */
+  backdrop-filter: blur(8px);                   /* Efecto vidrio esmerilado (muy moderno y profesional) */
+  -webkit-backdrop-filter: blur(8px);           /* Soporte Safari */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);  /* Borde sutil para definición */
+  padding: 1.2rem 2rem;
+  margin: 0 auto 2rem;
+  max-width: 400px;                             /* Limita el ancho para que no se estire demasiado */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+  </style>
+</head>
+<body>
+
+  
+
+  <div class="flyer-container">
+
+    <div class="logo-wrapper">
+      <img 
+        src="img/revista/logo-cce-morona-santiago.png" 
+        alt="Casa de la Cultura Ecuatoriana Benjamín Carrión - Núcleo Morona Santiago" 
+        class="logo-ccce"
+        style="max-width: 280px; margin: 0;"
+      >
+    </div class="logo-wrapper">
+
+        <h1>Morona Santiago</h1>
+    <div class="subtitulo">IDENTIDAD Y PERTENENCIA</div>
+
+    <img src="img/revista/boceto portada copia.jpg" alt="Mano ancestral de Morona Santiago" class="mano-img">
+
+    <p class="introduccion">
+      La mano de un gigante emerge de la selva profunda<br>
+      para recordar quiénes somos: herederos de una memoria milenaria,<br>
+      guardianes de una naturaleza indomable y testigos de una resiliencia eterna.
+    </p>
+
+    <p class="introduccion" style="margin-top: -1rem;">
+      56 páginas a todo color que recorren:<br>
+      <span class="highlight">símbolos y territorio</span> • 
+      <span class="highlight">patrimonio vivo</span> • 
+      <span class="highlight">arte y memoria</span> • 
+      <span class="highlight">ecos de la tierra</span> • 
+      <span class="highlight">patriotismo que une alegría y tristeza</span>
+    </p>
+
+    <a href="revista.pdf" download class="boton-descarga" onclick="trackDownload()">
+      DESCARGAR REVISTA GRATIS
+    </a>
+
+    <p class="info">PDF • ~15 MB • Edición especial – Casa de la Cultura Ecuatoriana</p>
+
+    <div class="footer">
+      Casa de la Cultura Ecuatoriana • Núcleo de Morona Santiago<br>
+      Un homenaje a nuestra Amazonía resiliente y eterna • 2025-2026
+    </div>
+
+  </div>
+
+  <script>
+    function trackDownload() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'descarga_revista', {
+          event_category: 'Revista Morona Santiago',
+          event_label: 'Descarga PDF Identidad y Pertenencia',
+          value: 1
+        });
+      }
+    }
+  </script>
+</body>
+</html>
