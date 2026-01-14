@@ -239,12 +239,6 @@
           Siguiente <i class="fas fa-arrow-right"></i>
         </button>
       </div>
-
-      <div class="zoom-controls">
-        <button class="zoom-btn" id="zoom-out" title="Alejar"><i class="fas fa-search-minus"></i></button>
-        <button class="zoom-btn" id="zoom-reset" title="Tamaño original"><i class="fas fa-expand-alt"></i></button>
-        <button class="zoom-btn" id="zoom-in" title="Acercar"><i class="fas fa-search-plus"></i></button>
-      </div>
     </section>
   </div>
 
@@ -323,26 +317,6 @@
       }
     });
 
-    // Zoom
-    // Zoom funcional – asegúrate de que estén aquí
-document.getElementById('zoom-in').addEventListener('click', () => {
-  if (scale < 3) {
-    scale += 0.15;
-    renderPage(currentPage);
-  }
-});
-
-document.getElementById('zoom-out').addEventListener('click', () => {
-  if (scale > 0.6) {
-    scale -= 0.15;
-    renderPage(currentPage);
-  }
-});
-
-document.getElementById('zoom-reset').addEventListener('click', () => {
-  scale = INITIAL_SCALE;
-  renderPage(currentPage);
-});
 
     // Cargar al iniciar
     loadPDF();
