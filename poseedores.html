@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morona Santiago • Lector de PDF</title>
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --verde-selva: #1d5c54;
+      --verde-claro: #a1ca3d;
+      --naranja-ancestral: #e67e22;
+      --crema: #f8f5e9;
+      --negro-profundo: #0f1c1a;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom, #0f1c1a 0%, #1d5c54 100%);
+      color: var(--crema);
+      min-height: 100vh;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(29, 92, 84, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      border: 1px solid rgba(161,202,61,0.25);
+      overflow: hidden;
+    }
+
+    header {
+      background: rgba(15,28,26,0.6);
+      padding: 1.8rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(230,126,34,0.3);
+    }
+
+    .logo-header {
+      max-width: 220px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--naranja-ancestral);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .success-message {
+      background: rgba(161,202,61,0.15);
+      border: 1px solid rgba(161,202,61,0.4);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--crema);
+    }
+
+    .viewer-section {
+      padding: 1.5rem 2rem;
+    }
+
+    .viewer-container {
+      background: rgba(0,0,0,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      position: relative;
+      min-height: 600px;
+      border: 1px solid rgba(230,126,34,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    #pdf-canvas {
+      max-width: 100%;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      background: white;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 1.8rem;
+      background: var(--naranja-ancestral);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: #d35400;
+      transform: translateY(-3px);
+    }
+
+    .nav-btn:disabled {
+      background: #8b4513;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .page-info {
+      background: rgba(161,202,61,0.2);
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .zoom-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+
+    .zoom-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(230,126,34,0.25);
+      color: white;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .zoom-btn:hover {
+      background: rgba(230,126,34,0.45);
+      transform: scale(1.1);
+    }
+
+    .loading {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,28,26,0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(161,202,61,0.3);
+      border-top: 6px solid var(--verde-claro);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #a0c0b8;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .viewer-container { min-height: 450px; }
+      .nav-btn { padding: 0.7rem 1.4rem; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <img src="img/revista/logo-cce-morona-santiago.png" alt="CCE Núcleo Morona Santiago" class="logo-header">
+      <h1>Morona Santiago • Identidad y Pertenencia</h1>
+    </header>
+
+    <div class="success-message">
+      <i class="fas fa-check-circle"></i> Lista completa de personas reconocidas como poseedores de saberes ancestrales en Morona Santiago
+    </div>
+
+    <section class="viewer-section">
+      <div class="viewer-container">
+        <canvas id="pdf-canvas"></canvas>
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p style="margin-top:1.2rem;">Cargando legado cultural...</p>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" id="prev-btn" disabled>
+          <i class="fas fa-arrow-left"></i> Anterior
+        </button>
+        <div class="page-info" id="page-info">Página: - / -</div>
+        <button class="nav-btn" id="next-btn" disabled>
+          Siguiente <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="zoom-controls">
+        <button class="zoom-btn" id="zoom-out" title="Alejar"><i class="fas fa-search-minus"></i></button>
+        <button class="zoom-btn" id="zoom-reset" title="Tamaño original"><i class="fas fa-expand-alt"></i></button>
+        <button class="zoom-btn" id="zoom-in" title="Acercar"><i class="fas fa-search-plus"></i></button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    Casa de la Cultura Ecuatoriana • Núcleo de Morona Santiago • Patrimonio vivo de la Amazonía
+  </footer>
+
+  <script type="module">
+    import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
+
+    const PDF_URL = 'https://labtd2.com/pdf/poseedores.pdf';  // ← Cambia aquí si es necesario
+    const INITIAL_SCALE = 1.6;
+
+    const canvas = document.getElementById('pdf-canvas');
+    const loading = document.getElementById('loading');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const pageInfo = document.getElementById('page-info');
+
+    let pdfDoc = null;
+    let currentPage = 1;
+    let scale = INITIAL_SCALE;
+
+    async function loadPDF() {
+      loading.style.display = 'flex';
+      try {
+        const loadingTask = pdfjsLib.getDocument(PDF_URL);
+        pdfDoc = await loadingTask.promise;
+        renderPage(currentPage);
+        updatePageInfo();
+        prevBtn.disabled = currentPage <= 1;
+        nextBtn.disabled = currentPage >= pdfDoc.numPages;
+      } catch (error) {
+        console.error('Error cargando PDF:', error);
+        alert('No se pudo cargar el documento. Verifica la URL.');
+      } finally {
+        setTimeout(() => { loading.style.display = 'none'; }, 400);
+      }
+    }
+
+    async function renderPage(pageNum) {
+      const page = await pdfDoc.getPage(pageNum);
+      const viewport = page.getViewport({ scale });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      const renderContext = {
+        canvasContext: canvas.getContext('2d'),
+        viewport: viewport
+      };
+      await page.render(renderContext).promise;
+    }
+
+    function updatePageInfo() {
+      pageInfo.textContent = `Página: ${currentPage} / ${pdfDoc.numPages}`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderPage(currentPage);
+        updatePageInfo();
+        nextBtn.disabled = false;
+        prevBtn.disabled = currentPage === 1;
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < pdfDoc.numPages) {
+        currentPage++;
+        renderPage(currentPage);
+        updatePageInfo();
+        prevBtn.disabled = false;
+        nextBtn.disabled = currentPage === pdfDoc.numPages;
+      }
+    });
+
+    // Zoom
+    document.getElementById('zoom-in').addEventListener('click', () => {
+      if (scale < 3) { scale += 0.15; renderPage(currentPage); }
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', () => {
+      if (scale > 0.6) { scale -= 0.15; renderPage(currentPage); }
+    });
+
+    document.getElementById('zoom-reset').addEventListener('click', () => {
+      scale = INITIAL_SCALE;
+      renderPage(currentPage);
+    });
+
+    // Cargar al iniciar
+    loadPDF();
+
+    // Redimensionar
+    window.addEventListener('resize', () => {
+      if (pdfDoc) renderPage(currentPage);
+    });
+  </script>
+</body>
+</html>
