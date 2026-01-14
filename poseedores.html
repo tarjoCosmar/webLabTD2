@@ -256,7 +256,7 @@
     import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs';
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
 
-    const PDF_URL = 'https://labtd2.com/pdf/poseedores.pdf';  // ← Cambia aquí si es necesario
+    const PDF_URL = 'https://cors-anywhere.com/https://labtd2.com/pdf/poseedores.pdf';  // ← Cambia aquí si es necesario
     const INITIAL_SCALE = 1.6;
 
     const canvas = document.getElementById('pdf-canvas');
@@ -324,18 +324,25 @@
     });
 
     // Zoom
-    document.getElementById('zoom-in').addEventListener('click', () => {
-      if (scale < 3) { scale += 0.15; renderPage(currentPage); }
-    });
+    // Zoom funcional – asegúrate de que estén aquí
+document.getElementById('zoom-in').addEventListener('click', () => {
+  if (scale < 3) {
+    scale += 0.15;
+    renderPage(currentPage);
+  }
+});
 
-    document.getElementById('zoom-out').addEventListener('click', () => {
-      if (scale > 0.6) { scale -= 0.15; renderPage(currentPage); }
-    });
+document.getElementById('zoom-out').addEventListener('click', () => {
+  if (scale > 0.6) {
+    scale -= 0.15;
+    renderPage(currentPage);
+  }
+});
 
-    document.getElementById('zoom-reset').addEventListener('click', () => {
-      scale = INITIAL_SCALE;
-      renderPage(currentPage);
-    });
+document.getElementById('zoom-reset').addEventListener('click', () => {
+  scale = INITIAL_SCALE;
+  renderPage(currentPage);
+});
 
     // Cargar al iniciar
     loadPDF();
