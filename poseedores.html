@@ -256,7 +256,7 @@
     import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs';
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
 
-    const PDF_URL = 'https://cors-anywhere.com/https://labtd2.com/pdf/poseedores.pdf';  // ← Cambia aquí si es necesario
+    const PDF_URL = 'https://corsproxy.io/?' + encodeURIComponent('https://labtd2.com/pdf/poseedores.pdf');  // ← Cambia aquí si es necesario
     const INITIAL_SCALE = 1.6;
 
     const canvas = document.getElementById('pdf-canvas');
