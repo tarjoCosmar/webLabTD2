@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shuar Chicham · Vocabulario Interactivo</title>
+<meta name="description" content="Aprende el idioma shuar con tarjetas interactivas. Vocabulario bilingüe shuar-español organizado por categorías temáticas.">
+<style>
+/* ── Reset y base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --tierra:   #5C3010;
+  --tierra2:  #3D2010;
+  --tierra3:  #2C1A08;
+  --oro:      #8B5E1A;
+  --oro2:     #C47A2A;
+  --crema:    #F4EDD8;
+  --crema2:   #EDE5CC;
+  --selva:    #1A4A0D;
+  --selva2:   #112E08;
+  --noche:    #0D1F0A;
+  --suave:    #9A6840;
+  --texto:    #2C1A08;
+  --blanco:   #ffffff;
+  --sombra:   rgba(44,26,8,0.15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--noche);
+  color: var(--texto);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ENCABEZADO ───────────────────────────────────────────── */
+header {
+  background: var(--noche);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-sky {
+  background: linear-gradient(180deg, #0D1F0A 0%, #143010 65%, #1A4A0D 100%);
+  padding: 36px 24px 0;
+  position: relative;
+  min-height: 180px;
+}
+
+/* Estrellas */
+.stars { position: absolute; inset: 0; pointer-events: none; }
+.star {
+  position: absolute;
+  background: #F5EDD6;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle { 0%{opacity:.4} 100%{opacity:.9} }
+
+/* Luna */
+.luna {
+  position: absolute;
+  top: 18px; right: 48px;
+  width: 56px; height: 56px;
+}
+.luna::before {
+  content: '';
+  position: absolute;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #F2E0A0;
+  box-shadow: 0 0 18px rgba(242,224,160,0.3);
+}
+.luna::after {
+  content: '';
+  position: absolute;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #0D1F0A;
+  top: -4px; left: 10px;
+}
+
+/* Silueta selva */
+.selva-silhouette {
+  position: relative;
+  height: 60px;
+  margin-top: 24px;
+}
+.selva-silhouette svg { width: 100%; height: 100%; display: block; }
+
+/* Zona pergamino del header */
+.header-pergamino {
+  background: linear-gradient(180deg, #F8F0DC 0%, #F0E8C8 100%);
+  padding: 28px 24px 24px;
+  text-align: center;
+  position: relative;
+  border-left: 6px solid var(--tierra);
+  border-right: 6px solid var(--tierra);
+}
+.header-pergamino::before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--oro), transparent);
+  margin-bottom: 20px;
+}
+.header-pergamino::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--oro), transparent);
+  margin-top: 20px;
+}
+
+.titulo-principal {
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: bold;
+  color: var(--tierra3);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.titulo-linea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+.titulo-linea::before,
+.titulo-linea::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 1.5px;
+  background: var(--oro);
+  opacity: 0.6;
+}
+.titulo-rombo {
+  width: 10px; height: 10px;
+  background: var(--oro);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.subtitulo {
+  font-size: clamp(14px, 3vw, 20px);
+  color: var(--tierra);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.subtitulo-desc {
+  font-size: 13px;
+  color: var(--suave);
+}
+
+/* Símbolo nanki */
+.nanki-symbol {
+  width: 48px; height: 48px;
+  margin: 12px auto 0;
+  opacity: 0.7;
+}
+
+/* Pie de header oscuro */
+.header-pie {
+  background: var(--tierra3);
+  padding: 12px 24px;
+  text-align: center;
+}
+.header-pie p {
+  font-size: 11px;
+  color: var(--oro2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── BARRA DE BÚSQUEDA ────────────────────────────────────── */
+.search-section {
+  background: var(--crema2);
+  padding: 20px 24px;
+  border-bottom: 2px solid var(--oro);
+}
+.search-label {
+  font-size: 12px;
+  color: var(--suave);
+  margin-bottom: 8px;
+  display: block;
+  letter-spacing: 1px;
+}
+.search-wrap {
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  left: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--suave);
+  font-size: 16px;
+  pointer-events: none;
+}
+#search {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  border: 1.5px solid var(--oro);
+  border-radius: 6px;
+  background: var(--crema);
+  color: var(--texto);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+#search:focus {
+  border-color: var(--tierra);
+  box-shadow: 0 0 0 3px rgba(92,48,16,0.12);
+}
+#search::placeholder { color: var(--suave); opacity: .7; }
+
+/* ── CONTENIDO PRINCIPAL ──────────────────────────────────── */
+main {
+  background: var(--crema);
+  min-height: 60vh;
+}
+
+/* Instrucción -->*/
+.instruccion {
+  background: var(--crema2);
+  border-left: 4px solid var(--oro2);
+  padding: 10px 16px;
+  margin: 0 24px 20px;
+  font-size: 13px;
+  color: var(--suave);
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── PESTAÑAS ─────────────────────────────────────────────── */
+.tabs-wrapper {
+  padding: 20px 20px 0;
+  background: var(--crema);
+  border-bottom: 2px solid var(--crema2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px var(--sombra);
+}
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-bottom: 16px;
+}
+.tab {
+  padding: 7px 16px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1.5px solid var(--oro);
+  background: var(--crema);
+  color: var(--tierra);
+  cursor: pointer;
+  transition: all .18s;
+  letter-spacing: .3px;
+}
+.tab:hover { background: var(--crema2); }
+.tab.active {
+  background: var(--tierra2);
+  color: var(--crema);
+  border-color: var(--tierra2);
+}
+
+/* ── SECCIONES ────────────────────────────────────────────── */
+.sections-wrapper { padding: 20px; }
+.section { display: none; }
+.section.active { display: block; }
+
+.cat-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2.5px solid;
+}
+.cat-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.cat-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--tierra3);
+}
+.cat-subtitle {
+  font-size: 12px;
+  color: var(--suave);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* ── GRID DE TARJETAS ─────────────────────────────────────── */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.vocab-card {
+  background: var(--blanco);
+  border: 1.5px solid #E0D4B8;
+  border-radius: 8px;
+  padding: 14px 14px 10px;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.vocab-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--oro);
+  opacity: 0;
+  transition: opacity .15s;
+}
+.vocab-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--sombra);
+  border-color: var(--oro);
+}
+.vocab-card:hover::before { opacity: 1; }
+.vocab-card.flipped {
+  background: var(--crema);
+  border-color: var(--tierra);
+}
+.vocab-card.flipped::before { opacity: 1; background: var(--tierra); }
+
+.word-shuar {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--tierra3);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.word-esp {
+  font-size: 14px;
+  color: var(--selva);
+  line-height: 1.3;
+  margin-bottom: 4px;
+  display: none;
+}
+.vocab-card.flipped .word-shuar { color: var(--suave); font-weight: normal; font-size: 12px; }
+.vocab-card.flipped .word-esp { display: block; font-size: 15px; font-weight: bold; color: var(--tierra3); }
+
+.card-hint {
+  font-size: 10px;
+  color: #B8A888;
+  font-style: italic;
+  align-self: flex-end;
+}
+.vocab-card.flipped .card-hint { color: var(--oro2); }
+
+/* ── RESULTADOS DE BÚSQUEDA ───────────────────────────────── */
+#search-results { display: none; padding: 20px; }
+.search-count {
+  font-size: 13px;
+  color: var(--suave);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+.search-cat-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: white;
+}
+.no-results {
+  font-size: 14px;
+  color: var(--suave);
+  padding: 24px 0;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── ESTADÍSTICAS ─────────────────────────────────────────── */
+.stats-bar {
+  background: var(--tierra2);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.stat {
+  text-align: center;
+}
+.stat-num {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--oro2);
+  display: block;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--crema2);
+  opacity: .7;
+  letter-spacing: 1px;
+}
+
+/* ── PIE DE PÁGINA ────────────────────────────────────────── */
+footer {
+  background: var(--tierra3);
+  padding: 28px 24px;
+  text-align: center;
+  border-top: 3px solid var(--oro);
+}
+.footer-logo-text {
+  font-size: 13px;
+  color: var(--oro2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.footer-sub {
+  font-size: 11px;
+  color: var(--suave);
+  margin-bottom: 16px;
+}
+.footer-link {
+  display: inline-block;
+  background: var(--selva);
+  color: var(--crema);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-decoration: none;
+  border: 1px solid var(--selva2);
+  transition: background .2s;
+  font-family: Georgia, serif;
+}
+.footer-link:hover { background: var(--selva2); }
+.footer-cr {
+  margin-top: 16px;
+  font-size: 10px;
+  color: var(--suave);
+  opacity: .6;
+}
+
+/* ── MODO ESTUDIO (flipall) ───────────────────────────────── */
+.mode-bar {
+  padding: 10px 20px;
+  background: var(--crema2);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #E0D4B8;
+}
+.mode-label {
+  font-size: 12px;
+  color: var(--suave);
+  font-style: italic;
+  flex: 1;
+}
+.btn-mode {
+  padding: 6px 14px;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  border: 1.5px solid var(--oro);
+  border-radius: 16px;
+  background: var(--crema);
+  color: var(--tierra);
+  cursor: pointer;
+  transition: all .15s;
+}
+.btn-mode:hover, .btn-mode.active {
+  background: var(--tierra2);
+  color: var(--crema);
+  border-color: var(--tierra2);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .vocab-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .tabs-wrapper { padding: 14px 14px 0; }
+  .sections-wrapper { padding: 14px; }
+  .titulo-principal { font-size: 36px; }
+  .stats-bar { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ ENCABEZADO ══ -->
+<header>
+  <div class="header-sky">
+    <!-- Estrellas decorativas -->
+    <div class="stars" id="stars"></div>
+    <!-- Luna -->
+    <div class="luna"></div>
+
+    <!-- Silueta de selva SVG -->
+    <div class="selva-silhouette">
+      <svg viewBox="0 0 900 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,50 Q25,28 50,35 Q75,20 110,28 Q140,12 180,20 Q210,5 255,14 Q285,0 325,10 Q360,0 400,8 Q435,0 475,8 Q510,0 555,10 Q590,2 635,12 Q665,0 710,10 Q745,3 790,14 Q825,5 870,15 L900,18 L900,60 L0,60 Z" fill="#0A2406"/>
+        <path d="M0,55 Q20,38 48,44 Q72,30 108,38 Q138,22 175,30 Q208,14 250,22 Q280,8 322,18 Q355,6 398,16 Q432,6 472,16 Q508,6 550,18 Q585,8 632,20 Q662,8 708,18 Q744,10 788,22 Q822,12 868,24 L900,26 L900,60 L0,60 Z" fill="#112E08"/>
+        <path d="M0,58 Q18,46 44,50 Q68,38 104,44 Q132,32 170,38 Q202,24 246,32 Q276,18 318,28 Q352,16 394,26 Q428,16 468,26 Q504,16 546,28 Q580,18 628,30 Q658,18 705,28 Q740,20 784,32 Q818,22 864,34 L900,36 L900,60 L0,60 Z" fill="#1A4A0D"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Zona pergamino -->
+  <div class="header-pergamino">
+    <div class="titulo-principal">SHUAR CHICHAM</div>
+    <div class="titulo-linea"><div class="titulo-rombo"></div></div>
+    <div class="subtitulo">Vocabulario Interactivo</div>
+    <div class="subtitulo-desc">Guía de Lengua y Cultura Shuar &nbsp;·&nbsp; Amazonía Ecuatoriana</div>
+
+    <!-- Símbolo Nanki (lanza vista desde arriba) -->
+    <svg class="nanki-symbol" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="22" stroke="#8B5E1A" stroke-width="1.2" opacity=".5"/>
+      <circle cx="24" cy="24" r="17" stroke="#C47A2A" stroke-width=".8" opacity=".35"/>
+      <polygon points="24,6 30,22 24,38 18,22" stroke="#C47A2A" stroke-width="1.2" fill="none" opacity=".55"/>
+      <polygon points="24,10 28,22 24,34 20,22" stroke="#8B5E1A" stroke-width=".8" fill="none" opacity=".4"/>
+      <circle cx="24" cy="22" r="3.5" fill="#C47A2A" opacity=".6"/>
+      <circle cx="24" cy="2"  r="2" fill="#C47A2A" opacity=".4"/>
+      <circle cx="24" cy="46" r="2" fill="#C47A2A" opacity=".4"/>
+      <circle cx="2"  cy="24" r="2" fill="#C47A2A" opacity=".4"/>
+      <circle cx="46" cy="24" r="2" fill="#C47A2A" opacity=".4"/>
+    </svg>
+  </div>
+
+  <div class="header-pie">
+    <p>Casa de la Cultura Ecuatoriana Benjamín Carrión &nbsp;·&nbsp; Núcleo Morona Santiago &nbsp;·&nbsp; 2026</p>
+  </div>
+</header>
+
+<!-- ══ ESTADÍSTICAS ══ -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat">
+    <span class="stat-num" id="totalWords">0</span>
+    <span class="stat-label">Palabras</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num" id="totalCats">0</span>
+    <span class="stat-label">Categorías</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num" id="flippedCount">0</span>
+    <span class="stat-label">Aprendidas</span>
+  </div>
+</div>
+
+<!-- ══ BÚSQUEDA ══ -->
+<div class="search-section">
+  <span class="search-label">Buscar en todo el vocabulario</span>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search"
+      placeholder="Escribe en shuar o en español..."
+      autocomplete="off" autocorrect="off" spellcheck="false">
+  </div>
+</div>
+
+<!-- ══ CONTENIDO PRINCIPAL ══ -->
+<main>
+  <!-- Resultados de búsqueda -->
+  <div id="search-results">
+    <p class="search-count" id="search-count"></p>
+    <div class="vocab-grid" id="search-grid"></div>
+  </div>
+
+  <!-- Vista principal -->
+  <div id="main-view">
+    <!-- Pestañas -->
+    <div class="tabs-wrapper">
+      <div class="tabs" id="tabs"></div>
+    </div>
+
+    <!-- Barra de modo -->
+    <div class="mode-bar">
+      <span class="mode-label">Toca cada tarjeta para revelar la traducción</span>
+      <button class="btn-mode" id="btnShowAll">Ver todas</button>
+      <button class="btn-mode" id="btnHideAll">Ocultar todas</button>
+    </div>
+
+    <!-- Instrucción -->
+    <div class="sections-wrapper">
+      <div id="sections"></div>
+    </div>
+  </div>
+</main>
+
+<!-- ══ PIE DE PÁGINA ══ -->
+<footer>
+  <div class="footer-logo-text">Shuar Chicham</div>
+  <div class="footer-sub">Guía de Lengua y Cultura Shuar &nbsp;·&nbsp; Marcelo Ushap &nbsp;·&nbsp; 2026</div>
+  <a href="https://labtd2.com/tablas_vocabulario_shuar.html" class="footer-link">
+    🎮 Acceder al juego interactivo completo
+  </a>
+  <div class="footer-cr">
+    Casa de la Cultura Ecuatoriana Benjamín Carrión · Núcleo Morona Santiago<br>
+    Diseño y diagramación: Marcos Chamorro Mera
+  </div>
+</footer>
+
+<script>
+// ── Datos del vocabulario ─────────────────────────────────────────────────────
+const DATA = [
+  {id:'familia', label:'Familia', color:'#7A3A08', dot:'#E8902A', entries:[
+    ['Apach','Abuelo'],['Nukuch','Abuela'],['Apa','Papá'],['Nuku','Mamá'],
+    ['Uchi','Hijo (niño)'],['Nawant','Hija'],['Tirank','Nieto / nieta'],
+    ['Yatsut','Hermano'],['Umaa','Hermana'],['Sait','Cuñado'],
+    ['Wajet','Cuñado / cuñada'],['Iich','Suegro'],['Tsatsa','Suegra'],
+    ['Kana yatsut','Primo'],['Kana umaa','Prima'],
+  ]},
+  {id:'cuerpo', label:'Cuerpo', color:'#882010', dot:'#E07050', entries:[
+    ['Muuk','Cabeza'],['Nijiai','Frente'],['Intiash','Cabello'],
+    ['Kuish','Oreja'],['Nuji','Nariz'],['Jii','Ojo'],
+    ['Yapi','Cara'],['Wene','Boca'],['Sue','Garganta'],
+    ['Yakai','Hombro'],['Kuntu','Brazo'],['Chinkiun','Codo'],
+    ['Ewej','Mano'],['Wake','Barriga'],['Untuch','Ombligo'],
+    ['Maku','Pierna'],['Tikish','Rodilla'],['Kankaj','Canilla'],
+    ['Nawe','Pie'],['Urajink','Ceja'],
+  ]},
+  {id:'animales', label:'Animales', color:'#2A5E0A', dot:'#80B840', entries:[
+    ['Yawa','Perro'],['Michik','Gato'],['Kuuk','Cerdo'],['Kawai','Caballo'],
+    ['Patu','Pato'],['Paapu','Pavo'],['Atash','Gallo o gallina'],
+    ['Ikiamau','Mono'],['Pama','Danta / tapir'],['Paki','Sajino'],
+    ['Kashai','Guanta'],['Kayuk','Guatusa'],['Kunkuim','Tortuga'],
+    ['Japa','Venado'],['Napi','Culebra'],['Yakum','Mono aullador'],
+    ['Kuwa','Rana'],['Uyush','Perezoso'],['Shishia','Jaguar'],
+    ['Panki','Boa'],['Uunt yawa','Tigre'],
+  ]},
+  {id:'aves', label:'Aves', color:'#0A5E46', dot:'#40BAA0', entries:[
+    ['Churuwia','Cóndor'],['Chuank','Gallinazo'],['Pinchu','Águila / gavilán'],
+    ['Mashu','Paujil'],['Ayachui','Pava / montete'],['Kawaa','Lora'],
+    ['Yampuna','Guacamayo'],['Chiimp','Chilicres'],['Yapankam','Paloma'],
+    ['Pininch','Tucán'],['Tatasham','Carpintero'],['Auju','Cárabo / potó'],
+    ['Jempe','Colibrí / picaflor'],['Ampush','Lechuza'],
+  ]},
+  {id:'plantas', label:'Plantas', color:'#1E4808', dot:'#A0C870', entries:[
+    ['Ajej','Jengibre'],['Perenk','Cúrcuma'],['Ipiak','Achiote'],
+    ['Natem','Ayahuasca'],['Maikiua','Floripondio'],['Wais','Guayusa'],
+    ['Nara','Ortiga'],['Yumunk','Limón'],['Sesa','Menta'],
+    ['Piripri','Junco medicinal'],['Uruchmias','Sangre de drago'],
+    ['Kaip','Ajo silvestre'],['Arpaj','Albahaca'],
+  ]},
+  {id:'alimentos', label:'Alimentos', color:'#5A3006', dot:'#E8A840', entries:[
+    ['Mama','Yuca'],['Champiar','Plátano'],['Inchi','Camote'],
+    ['Miik','Frejol / poroto'],['Nuse','Maní'],['Namank','Carne'],
+    ['Namak','Pescado'],['Nujint','Huevo'],['Muntsu','Leche'],
+    ['Mukint','Chontacuro'],['Ijiu','Palmito'],['Wee','Sal'],
+    ['Jimia','Ají'],['Uwi','Chonta'],['Esemp','Hongos'],
+  ]},
+  {id:'idioma', label:'Idioma', color:'#3A2888', dot:'#9090D8', entries:[
+    ['Wii','Yo'],['Ame','Tú'],['Nii','Él / Ella'],
+    ['Ii','Nosotros'],['Atum','Vosotros'],['Au','Ellos / Ellas'],
+    ['Ee','Sí'],['Atsa','No'],['Atsawai','No hay'],['Awai','Sí hay'],
+    ['Yuminksajme','Gracias'],['Weajai','Me voy'],['Winitia','Venga'],
+    ['Kashín','Mañana'],['Yau','Ayer'],['Tsawant','Día'],['Kashi','Noche'],
+    ['Shiram','Hermoso / bonito'],['Penker','Bueno / bien'],
+    ['Arutam','Dios (entidad shuar)'],['Kakaram','Fuerte'],
+    ['Itiurchat','Difícil'],['Penker wetá','Buen viaje'],
+    ['Yuminksajme','Gracias'],['Shiir taume','Bienvenido'],
+  ]},
+  {id:'numeros', label:'Números', color:'#622010', dot:'#E0A890', entries:[
+    ['Chikichik','1 — Uno'],['Jimiar','2 — Dos'],['Menaint','3 — Tres'],
+    ['Aintiuk','4 — Cuatro'],['Ewej','5 — Cinco'],['Ujúk','6 — Seis'],
+    ['Tsenken','7 — Siete'],['Yarush','8 — Ocho'],['Usumtai','9 — Nueve'],
+    ['Nawe','10 — Diez'],['Jimiará nawe','20 — Veinte'],
+    ['Washim','100 — Cien'],['Nupantí','1.000 — Mil'],
+    ['Amuchat','1.000.000 — Millón'],
+  ]},
+];
+
+// ── Estrellas decorativas ─────────────────────────────────────────────────────
+(function(){
+  const c = document.getElementById('stars');
+  const positions = [
+    [8,15,2],[22,8,1.4],[38,18,2.2],[55,6,1.6],[72,14,1.8],
+    [85,9,1.4],[14,35,1.2],[30,28,1.8],[48,32,1.4],[65,25,2],
+    [80,30,1.2],[92,20,1.6],[5,50,1.4],[20,48,1.8],[60,42,1.2],
+    [75,46,1.6],[90,38,1.4],[35,45,2],[50,50,1.2],
+  ];
+  positions.forEach(([x,y,r],i) => {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.cssText = `left:${x}%;top:${y}%;width:${r*2}px;height:${r*2}px;animation-delay:${(i*0.3)%3}s;animation-duration:${2+i%2}s`;
+    c.appendChild(s);
+  });
+})();
+
+// ── Estado ────────────────────────────────────────────────────────────────────
+let flippedTotal = 0;
+const totalWords = DATA.reduce((a,c) => a + c.entries.length, 0);
+document.getElementById('totalWords').textContent = totalWords;
+document.getElementById('totalCats').textContent = DATA.length;
+document.getElementById('flippedCount').textContent = 0;
+
+// ── Construir pestañas y secciones ───────────────────────────────────────────
+const tabsEl    = document.getElementById('tabs');
+const sectionsEl = document.getElementById('sections');
+
+DATA.forEach(cat => {
+  // Pestaña
+  const tab = document.createElement('button');
+  tab.className = 'tab';
+  tab.textContent = cat.label;
+  tab.dataset.id = cat.id;
+  tab.onclick = () => switchTab(cat.id);
+  tabsEl.appendChild(tab);
+
+  // Sección
+  const sec = document.createElement('div');
+  sec.className = 'section';
+  sec.id = 'sec-' + cat.id;
+
+  // Cabecera categoría
+  const hdr = document.createElement('div');
+  hdr.className = 'cat-header';
+  hdr.style.borderColor = cat.color;
+  hdr.innerHTML = `
+    <div class="cat-dot" style="background:${cat.dot}"></div>
+    <div>
+      <div class="cat-title">${cat.label}</div>
+      <div class="cat-subtitle">${cat.entries.length} palabras &nbsp;·&nbsp; toca cada tarjeta para ver la traducción</div>
+    </div>`;
+  sec.appendChild(hdr);
+
+  // Grid de tarjetas
+  const grid = document.createElement('div');
+  grid.className = 'vocab-grid';
+  cat.entries.forEach(([s, e]) => {
+    grid.appendChild(makeCard(s, e, cat.color, cat.dot));
+  });
+  sec.appendChild(grid);
+  sectionsEl.appendChild(sec);
+});
+
+function makeCard(s, e, color, dot) {
+  const card = document.createElement('div');
+  card.className = 'vocab-card';
+  card.dataset.shuar = s.toLowerCase();
+  card.dataset.esp   = e.toLowerCase();
+  card.innerHTML = `
+    <div class="word-shuar">${s}</div>
+    <div class="word-esp">${e}</div>
+    <div class="card-hint">toca para ver</div>`;
+  card.onclick = () => {
+    const wasFlipped = card.classList.contains('flipped');
+    card.classList.toggle('flipped');
+    card.querySelector('.card-hint').textContent =
+      card.classList.contains('flipped') ? 'shuar →' : 'toca para ver';
+    flippedTotal += wasFlipped ? -1 : 1;
+    document.getElementById('flippedCount').textContent = Math.max(0, flippedTotal);
+  };
+  return card;
+}
+
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.id === id));
+  document.querySelectorAll('.section').forEach(s =>
+    s.classList.toggle('active', s.id === 'sec-' + id));
+}
+switchTab('familia');
+
+// ── Mostrar / ocultar todas ───────────────────────────────────────────────────
+document.getElementById('btnShowAll').onclick = () => {
+  document.querySelectorAll('.section.active .vocab-card:not(.flipped)').forEach(c => c.click());
+};
+document.getElementById('btnHideAll').onclick = () => {
+  document.querySelectorAll('.section.active .vocab-card.flipped').forEach(c => c.click());
+};
+
+// ── Búsqueda ──────────────────────────────────────────────────────────────────
+const allWords = DATA.flatMap(cat =>
+  cat.entries.map(([s,e]) => ({s, e, cat:cat.label, color:cat.color, dot:cat.dot}))
+);
+
+document.getElementById('search').addEventListener('input', function () {
+  const q = this.value.trim().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  const mainView    = document.getElementById('main-view');
+  const searchView  = document.getElementById('search-results');
+
+  if (!q) {
+    mainView.style.display = '';
+    searchView.style.display = 'none';
+    return;
+  }
+
+  mainView.style.display  = 'none';
+  searchView.style.display = 'block';
+
+  const normalize = str => str.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+  const results = allWords.filter(w =>
+    normalize(w.s).includes(q) || normalize(w.e).includes(q)
+  );
+
+  const countEl = document.getElementById('search-count');
+  countEl.textContent = results.length
+    ? `${results.length} resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}`
+    : '';
+
+  const grid = document.getElementById('search-grid');
+  grid.innerHTML = '';
+
+  if (!results.length) {
+    grid.innerHTML = '<p class="no-results">Sin resultados. Intenta con otra palabra.</p>';
+    return;
+  }
+
+  results.forEach(({s, e, cat, color, dot}) => {
+    const card = makeCard(s, e, color, dot);
+    // Badge de categoría
+    const badge = document.createElement('div');
+    badge.className = 'search-cat-badge';
+    badge.style.background = color;
+    badge.textContent = cat;
+    card.insertBefore(badge, card.firstChild);
+    grid.appendChild(card);
+  });
+});
+</script>
+</body>
+</html>

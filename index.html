@@ -17,17 +17,17 @@
         </script>
 
         <link rel="icon" href="favicon.png" type="image/png">
-        <link rel="shortcut icon" href="favicon.ico" type="img/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         
         <!-- Slick Carousel CSS -->
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
         
         <!-- Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
         
         <!-- Swiper CSS -->
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
         
         <!-- Font Awesome CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -55,7 +55,7 @@
         <script type="text/javascript" src="js/classie.js"></script>
         
         <!-- Custom JS -->
-        <script type="module" src="/js/main.js" defer></script>
+        <script type="module" src="js/main.js"></script>
     </head>
     
 <body>
@@ -97,7 +97,7 @@
                 </ul>
                 <ul class="main-nav_mobile">
                     <li><a class="logo_mobile" href="#"><img src="img/logo_nav1.png" alt=""></a></li>
-                    <li><a class="res-nav_click" href="#"><i class="fa-bars"></i></a></li>
+                    <li><a class="res-nav_click" href="#"><i class="fas fa-bars"></i></a></li>
                 </ul>              
             </div>       
         </nav><!--main-nav-end-->
@@ -111,12 +111,13 @@
                 <div class="col-lg-5 col-sm-5 wow bounce-image delay-05s">
                     <img src="img/portadalpm.png" alt="Portada de La Pelotita Mágica" class="stop-bounce centered-image">
                 </div>
+            </div>
         </section><!--billboard-end-->
         
         <section class="swiper-section" id="swiper">
             <div class="container">
+                <h1 class="animated fadeInDown delay-07s">Cartelera D2</h1>
                 <div class="swiper-container">
-                    <h1 class="animated fadeInDown delay-07s">Cartelera D2</h1>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <a href="#" data-toggle="modal" data-target="#videoModal" data-video="https://www.youtube.com/embed/KnsJhBsWrnY">
@@ -187,10 +188,10 @@
         <footer class="footer"><!--copyright-©-->
             <div class="container-social">
                 <ul class="social-link">
-                    <li class="instagram"><a href="https://www.instagram.com/marcos_chamorro_mera/" target="_blank"><i class="fa-instagram"></i></a></li>
-                    <li class="facebook"><a href="https://www.facebook.com/pages/D2/665190513612321?ref=hl" target="_blank"><i class="fa-facebook"></i></a></li>
-                    <li class="gplus"><a href="https://www.youtube.com/@MrMarcosChamorro" target="_blank"><i class="fa-youtube"></i></a></li>
-                    <li class="tiktok"><a href="https://www.tiktok.com/@labtd2" target="_blank"><i class="fa-tiktok"></i></a></li>
+                    <li class="instagram"><a href="https://www.instagram.com/marcos_chamorro_mera/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li class="facebook"><a href="https://www.facebook.com/pages/D2/665190513612321?ref=hl" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li class="gplus"><a href="https://www.youtube.com/@MrMarcosChamorro" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                    <li class="tiktok"><a href="https://www.tiktok.com/@labtd2" target="_blank"><i class="fab fa-tiktok"></i></a></li>
                     <li class="twitter">
                         <a href="https://x.com/MarcosChamorroM" target="_blank"><img src="img/new-twitter-logo.svg" class="twitter-icon" alt="Twitter"></a>
                     </li>
@@ -222,31 +223,21 @@
       }
         );
         wow.init();
-        document.getElementById('header').onclick = function() {
-        var section = document.createElement('section');
-        section.className = 'wow fadeInDown';
-        this.parentNode.insertBefore(section, this);
-        };
     </script>
 
     <script type="text/javascript">
-	$(window).load(function(){
-		
-		$('.main-nav li a').bind('click',function(event){
+	$(window).on('load', function(){
+		$('.main-nav li a[href^="#"]').on('click', function(event){
 			var $anchor = $(this);
-			
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top - 102
-			}, 1500,'easeInOutExpo');
-			/*
-			if you don't want to use the easing effects:
-			$('html, body').stop().animate({
-				scrollTop: $($anchor.attr('href')).offset().top
-			}, 1000);
-			*/
-			event.preventDefault();
+			var target = $($anchor.attr('href'));
+			if (target.length) {
+				$('html, body').stop().animate({
+					scrollTop: target.offset().top - 102
+				}, 1500, 'easeInOutExpo');
+				event.preventDefault();
+			}
 		});
-	})
+	});
     </script>
 
 
